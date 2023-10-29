@@ -19,6 +19,10 @@ class Image
     #[ORM\Column]
     private ?bool $isMain = null;
 
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Car $car = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +48,18 @@ class Image
     public function setIsMain(bool $isMain): static
     {
         $this->isMain = $isMain;
+
+        return $this;
+    }
+
+    public function getCar(): ?Car
+    {
+        return $this->car;
+    }
+
+    public function setCar(?Car $car): static
+    {
+        $this->car = $car;
 
         return $this;
     }

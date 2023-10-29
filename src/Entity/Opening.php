@@ -28,6 +28,10 @@ class Opening
     #[ORM\Column(length: 10)]
     private ?string $pm_closing = null;
 
+    #[ORM\ManyToOne(inversedBy: 'openings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Company $company = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +93,18 @@ class Opening
     public function setPmClosing(string $pm_closing): static
     {
         $this->pm_closing = $pm_closing;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): static
+    {
+        $this->company = $company;
 
         return $this;
     }

@@ -20,6 +20,10 @@ class Service
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'services')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Company $company = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +49,18 @@ class Service
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): static
+    {
+        $this->company = $company;
 
         return $this;
     }
