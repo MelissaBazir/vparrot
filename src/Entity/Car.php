@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Trait\CreatedAtTrait;
+use App\Entity\Trait\SlugTrait;
 use App\Repository\CarRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Car
 {
     use CreatedAtTrait;
+    use SlugTrait;
     
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -37,6 +39,7 @@ class Car
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -91,8 +94,6 @@ class Car
 
         return $this;
     }
-
-
 
     /**
      * @return Collection<int, Image>
