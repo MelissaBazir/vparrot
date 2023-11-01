@@ -13,7 +13,7 @@ trait SlugTrait
         return $this->created_at;
     }
 
-    public function setSlug(string $slug): self
+    public function setSlug(string $slug): static
     {
         $this->slug = $slug;
 
