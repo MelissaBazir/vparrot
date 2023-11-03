@@ -6,6 +6,7 @@ use App\Entity\Trait\CreatedAtTrait;
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 class Review
@@ -24,9 +25,12 @@ class Review
     private ?string $textReview = null;
 
     #[ORM\Column]
+    #[Assert\LessThanOrEqual(4)]
+    #[Assert\GreaterThan(0)]
     private ?int $score = null;
 
-    #[ORM\Column]
+    // to set default value for isApproved to false
+    #[ORM\Column(options: ['default' => false])]
     private ?bool $isApproved = null;
 
 

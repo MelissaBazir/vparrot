@@ -33,8 +33,7 @@ class Company
     #[ORM\Column(length: 150)]
     private ?string $city = null;
 
-    #[ORM\OneToMany(mappedBy: 'company', targetEntity: User::class)]
-    private Collection $users;
+    
 
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Service::class)]
     private Collection $services;
@@ -42,11 +41,14 @@ class Company
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Opening::class)]
     private Collection $openings;
 
+    #[ORM\OneToMany(mappedBy: 'company', targetEntity: User::class)]
+    private Collection $users;
+
     public function __construct()
     {
-        $this->users = new ArrayCollection();
         $this->services = new ArrayCollection();
         $this->openings = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -181,6 +183,36 @@ class Company
             // set the owning side to null (unless already changed)
             if ($opening->getCompany() === $this) {
                 $opening->setCompany(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getCompany() === $this) {
+                $user->setCompany(null);
             }
         }
 
