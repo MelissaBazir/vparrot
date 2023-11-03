@@ -20,7 +20,7 @@ class Opening
     private ?string $am_opening = null;
 
     #[ORM\Column(length: 10)]
-    private ?string $am_closure = null;
+    private ?string $am_closing = null;
 
     #[ORM\Column(length: 10)]
     private ?string $pm_opening = null;
@@ -61,14 +61,14 @@ class Opening
         return $this;
     }
 
-    public function getAmClosure(): ?string
+    public function getAmClosing(): ?string
     {
-        return $this->am_closure;
+        return $this->am_closing;
     }
 
-    public function setAmClosure(string $am_closure): static
+    public function setAmClosing(string $am_closing): static
     {
-        $this->am_closure = $am_closure;
+        $this->am_closing = $am_closing;
 
         return $this;
     }
