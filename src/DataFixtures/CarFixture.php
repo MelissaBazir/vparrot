@@ -12,6 +12,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CarFixture extends Fixture
 {
+    private $counter = 1;
     public function __construct(private SluggerInterface $slugger)
     {
         // $this->slugger = $slugger; only in PHP8
@@ -20,7 +21,7 @@ class CarFixture extends Fixture
     {
         $faker = Factory::create();
 
-        for($cars = 0; $cars < 10; $cars++) {
+        for($cars = 1; $cars <= 9; $cars++) {
             $car = new Car();
             $car->setTitle($faker->words(3, true));
             $car->setSlug($this->slugger->slug($car->getTitle())->lower());
@@ -28,6 +29,9 @@ class CarFixture extends Fixture
             $car->setMileage($faker->randomNumber(6));
             $car->setPrice($faker->randomNumber(5, true));
             $manager->persist($car);
+
+            $this->addReference('car-'.$this->counter, $car);
+            $this->counter++;
         }
         $manager->flush();
     }

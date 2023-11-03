@@ -9,8 +9,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-;
-
 class UserFixture extends Fixture
 {
     private $counter = 1;
@@ -50,10 +48,11 @@ class UserFixture extends Fixture
             $user->setCompany($company);
             
             $manager->persist($user);
-            
+
             //reference a user for review fixture
-            $this->addReference('usr-'.$this->counter, $user);
+            $this->addReference('usr-'. $this->counter, $user);
             $this->counter++;
+            
         }
 
         $manager->flush();
