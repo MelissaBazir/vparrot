@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -36,6 +38,11 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control'
                 ],
                 'label' => 'Prénom',
+            ])
+            ->add('company', EntityType::class, [
+                'class'=> Company::class,
+                'choice_label' => 'name',
+                'label' => 'Société',
             ])
             ->add('telephone', TextType::class, [
                 'attr' => [
