@@ -16,7 +16,7 @@
                         Vous êtes connecté comme {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Me déconnecter</a>
                     </div>
                 {% endif %}
-
+                    
                 <h1 class="h3 mb-3 font-weight-normal">Me connecter</h1>
                 <label for="inputEmail" class="mb-2">Email</label>
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
@@ -30,6 +30,9 @@
                 <button class="btn btn-lg btn-primary mt-3" type="submit">
                     Me connecter
                 </button>
+                <a href="{{ path('app_register') }}" class="btn btn-lg btn-secondary mt-3">
+                    M'inscrire
+                </a>
             </form>
         </div>
     </div>
