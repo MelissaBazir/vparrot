@@ -14,8 +14,8 @@
                 <th>Mileage</th>
                 <th>Price</th>
                 <th>Created_at</th>
-                <th>Slug</th>
-                <th>actions</th>
+                {# <th>Slug</th> #}
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 <td>{{ car.mileage }}</td>
                 <td>{{ car.price }}</td>
                 <td>{{ car.createdAt ? car.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ car.slug }}</td>
+                {# <td>{{ car.slug }}</td> #}
                 <td>
                     <a href="{{ path('app_car_show', {'slug': car.slug}) }}">show</a>
                     <a href="{{ path('app_car_edit', {'slug': car.slug}) }}">edit</a>

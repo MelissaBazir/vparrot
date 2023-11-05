@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/occasions')]
 class CarController extends AbstractController
@@ -23,13 +24,18 @@ class CarController extends AbstractController
     }
 
     #[Route('/new', name: 'app_car_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $car = new Car();
         $form = $this->createForm(CarType::class, $car);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            //generation of slug
+            $slug = $slugger->slug($car->getTitle())->Lower();
+            $car->setSlug($slug);
+            
             $entityManager->persist($car);
             $entityManager->flush();
 
@@ -51,12 +57,16 @@ class CarController extends AbstractController
     }
 
     #[Route('/{slug}/edit', name: 'app_car_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Car $car, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Car $car, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(CarType::class, $car);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //generation of slug
+            $slug = $slugger->slug($car->getTitle())->Lower();
+            $car->setSlug($slug);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_car_index', [], Response::HTTP_SEE_OTHER);
