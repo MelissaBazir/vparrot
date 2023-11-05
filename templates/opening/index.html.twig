@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Opening index{% endblock %}
+
+{% block body %}
+    <h1>Opening index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Day</th>
+                <th>Am_opening</th>
+                <th>Am_closing</th>
+                <th>Pm_opening</th>
+                <th>Pm_closing</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for opening in openings %}
+            <tr>
+                {# <td>{{ opening.id }}</td> #}
+                <td>{{ opening.day }}</td>
+                <td>{{ opening.amOpening }}</td>
+                <td>{{ opening.amClosing }}</td>
+                <td>{{ opening.pmOpening }}</td>
+                <td>{{ opening.pmClosing }}</td>
+                <td>
+                    <a href="{{ path('app_opening_show', {'id': opening.id}) }}">show</a>
+                    <a href="{{ path('app_opening_edit', {'id': opening.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_opening_new') }}">Create new</a> #}
+{% endblock %}
