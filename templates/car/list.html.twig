@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car index{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            
+        </section>
+        <section class="row">
+            <div class="col-12">
+                <h1>Découvrez nos occasions - Arrivages tous les jours</h1>
+            </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        {% include 'car/_filter.html.twig' with {form: form} only %}
+                    </div>
+                    <div class="col-md-9">
+                        <div class="grid">
+                            {% for car in cars %}
+                                {% include 'car/_card.html.twig' with {car: car} only %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+{% endblock %}

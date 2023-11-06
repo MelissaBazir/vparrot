@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Car;
 use App\Form\CarType;
+use App\Form\SearchForm;
 use App\Repository\CarRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,10 +14,22 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-#[Route('/occasions')]
+
 class CarController extends AbstractController
 {
-    #[Route('/', name: 'app_car_index', methods: ['GET'])]
+    // Cars displayed in cards for customer
+    #[Route('/occasions', name: 'occasions_list', methods: ['GET'])]
+    public function list(CarRepository $carRepository): Response
+    {
+        $data = new SearchData();
+        $form = $this->createForm(SearchForm::class, $data);
+        return $this->render('car/list.html.twig', [
+            'cars' => $carRepository->findSearch(),
+            'form' => $form->createView(),
+        ]);
+    }
+    
+    #[Route('/cars', name: 'app_car_index', methods: ['GET'])]
     public function index(CarRepository $carRepository): Response
     {
         return $this->render('car/index.html.twig', [
@@ -23,7 +37,7 @@ class CarController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_car_new', methods: ['GET', 'POST'])]
+    #[Route('/cars/new', name: 'app_car_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $car = new Car();
@@ -48,7 +62,7 @@ class CarController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}', name: 'app_car_show', methods: ['GET'])]
+    #[Route('/cars/{slug}', name: 'app_car_show', methods: ['GET'])]
     public function show(Car $car): Response
     {
         return $this->render('car/show.html.twig', [
@@ -56,7 +70,16 @@ class CarController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}/edit', name: 'app_car_edit', methods: ['GET', 'POST'])]
+    // Details of a card for customer
+    #[Route('/occasions/{slug}', name: 'occasions_details', methods: ['GET'])]
+    public function details(Car $car): Response
+    {
+        return $this->render('car/details.html.twig', [
+            'car' => $car,
+        ]);
+    }
+
+    #[Route('/cars/{slug}/edit', name: 'app_car_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Car $car, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(CarType::class, $car);
@@ -78,7 +101,7 @@ class CarController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_car_delete', methods: ['POST'])]
+    #[Route('/cars/{id}', name: 'app_car_delete', methods: ['POST'])]
     public function delete(Request $request, Car $car, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$car->getId(), $request->request->get('_token'))) {

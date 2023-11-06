@@ -14,7 +14,7 @@ class Image
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $fileName = null;
+    private ?string $URL = null;
 
     #[ORM\Column]
     private ?bool $isMain = null;
@@ -28,14 +28,14 @@ class Image
         return $this->id;
     }
 
-    public function getFileName(): ?string
+    public function getURL(): ?string
     {
-        return $this->fileName;
+        return $this->URL;
     }
 
-    public function setFileName(string $fileName): static
+    public function setURL(string $URL): static
     {
-        $this->fileName = $fileName;
+        $this->URL = $URL;
 
         return $this;
     }

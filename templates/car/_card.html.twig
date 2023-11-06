@@ -1,0 +1,11 @@
+
+<div class="card h-100 m-3 col-4 text-center" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{car.title}}</h5>
+        <p class="card-title font-weight-bold fs-5 text-primary">{{car.price | number_format(0, ',', ' ')}} €</p>
+        <p class="card-text text-muted">{{car.year}}</p>
+        <p class="card-text text-muted">{{car.mileage | number_format(0, ',', ' ')}} km</p>
+        <a href="{{ path('occasions_details', {'slug': car.slug}) }}" class="btn btn-primary">Détails</a>
+    </div>
+</div>

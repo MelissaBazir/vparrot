@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage V. PARROT - {{car.title}} {% endblock %}
+
+{% block body %}
+    <h1>Détails de l'annonce {{car.title}} </h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ car.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ car.title }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ car.year }}</td>
+            </tr>
+            <tr>
+                <th>Mileage</th>
+                <td>{{ car.mileage }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ car.price }}</td>
+            </tr>
+            <tr>
+                <th>Mise en ligne le</th>
+                <td>{{ car.createdAt ? car.createdAt|date('d/m/Y') : '' }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('occasions_list') }}">Retour à la liste</a>
+
+    {# Renvoyer vers contact form et ajout auto du titre #}
+    <a href="{{ path('app_car_edit', {'slug': car.slug}) }}">En savoir plus</a>
+
+    
+{% endblock %}

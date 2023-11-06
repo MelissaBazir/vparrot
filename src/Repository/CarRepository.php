@@ -45,4 +45,14 @@ class CarRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+/**
+ * Retrieve cards corresponding to a search
+ * @return Car[]
+ */
+
+    public function findSearch(): array
+    {
+        return $this->findAll();
+    }
 }

@@ -16,7 +16,7 @@ class ImageFixture extends Fixture
 
         for ($img = 1; $img <= 20; $img++) {
             $image = new Image();
-            $image->setFileName($faker->image(null, 640, 480));
+            $image->setURL('https://picsum.photos/300/200');
             $image->setIsMain($faker->boolean());
             $car = $this->getReference('car-'.rand(1,9));
             $image->setCar($car);
