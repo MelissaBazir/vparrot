@@ -22,13 +22,6 @@ class OpeningController extends AbstractController
         ]);
     }
 
-    #[Route('/hours', name: 'app_opening_hours', methods: ['GET'])]
-    public function hours(OpeningRepository $openingRepository): Response
-    {
-        return $this->render('opening/_hours.html.twig', [
-            'openings' => $openingRepository->findAll(),
-        ]);
-    }
 
     #[Route('/new', name: 'app_opening_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

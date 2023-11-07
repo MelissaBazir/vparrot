@@ -1,0 +1,10 @@
+<ul class="nav flex-column">
+    {% for company in companies %}
+        <li class="nav-item mb-2">Garage {{company.name}}</li>
+        <li class="nav-item mb-2">{{company.email}}</li>
+        <li class="nav-item mb-2">{{company.telephone}}</li>
+        <li class="nav-item mb-2">{{company.address}}</li>
+        <li class="nav-item mb-2">{{company.zipcode}}</li>
+        <li class="nav-item mb-2">{{company.city}}</li>
+    {% endfor %}
+</ul>

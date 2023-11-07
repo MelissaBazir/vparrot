@@ -1,0 +1,8 @@
+
+<ul class="nav flex-column">
+    {% for opening in openings %}
+        <li class="nav-item mb-2">{{opening.day}} : {{opening.amOpening}}h -  {{opening.amClosing}}h / {{opening.pmOpening}}h -  {{opening.pmClosing}}h</li>
+    {% endfor %}
+        <li class="nav-item mb-2">dim. : Fermé</li>
+
+
