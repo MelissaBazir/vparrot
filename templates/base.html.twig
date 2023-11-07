@@ -15,10 +15,15 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
             }
+            .filter {
+                display: block;
+                position: sticky;
+                top: 16em;
+            }
         </style>
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('app') | replace({'src=': 'defer src='}) | raw }}
         {% endblock %}
     </head>
     <body>

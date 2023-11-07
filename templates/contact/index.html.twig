@@ -1,8 +1,18 @@
 {% extends 'base.html.twig' %}
-{% block title %}Contactez-nous{% endblock %}
+{% block title %}Garage V. PARROT - Contact{% endblock %}
 {% block body %}
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{message}}
+            </div>
+        {% endfor %}
+    </div>
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn">{{ button_label|default('Save') }}</button>
+        <div class="container">
+            <div class="d-flex flex-column flex-sm-col w-50">
+            {{ form(form) }}
+            </div>
+        </div>
     {{ form_end(form) }}
 {% endblock %}

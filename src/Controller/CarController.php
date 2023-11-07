@@ -19,12 +19,14 @@ class CarController extends AbstractController
 {
     // Cars displayed in cards for customer
     #[Route('/occasions', name: 'occasions_list', methods: ['GET'])]
-    public function list(CarRepository $carRepository): Response
+    public function list(CarRepository $carRepository, Request $request): Response
     {
         $data = new SearchData();
+        $data->page = $request->get('page',1);
         $form = $this->createForm(SearchForm::class, $data);
+        $form->handleRequest($request);
         return $this->render('car/list.html.twig', [
-            'cars' => $carRepository->findSearch(),
+            'cars' => $carRepository->findSearch($data),
             'form' => $form->createView(),
         ]);
     }

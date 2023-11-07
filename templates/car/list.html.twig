@@ -23,8 +23,13 @@
                                 {% include 'car/_card.html.twig' with {car: car} only %}
                             {% endfor %}
                         </div>
+                        <div>
+                            {{ knp_pagination_render(cars) }}
+                        </div>
                     </div>
                 </div>
+
+                
             </div>
             
         </section>

@@ -9,6 +9,12 @@ class SearchData
     /**
      * Undocumented variable
      *
+     * @var integer
+     */
+    public $page = 1;
+    /**
+     * Undocumented variable
+     *
      * @var string
      */
     public $q = '';
