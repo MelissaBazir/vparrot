@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Garage V. PARROT - Nos avis{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Ne nous croyez pas sur parole, fiez-vous à nos clients</h1>
+        {% for review in reviews %}
+            <h2> {{review.title}} </h2>
+            <p> {{review.textReview}} </p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

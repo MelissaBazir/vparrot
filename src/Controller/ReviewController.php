@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Review;
 use App\Form\ReviewType;
 use App\Repository\ReviewRepository;
+use App\Repository\CompanyRepository;
+use App\Repository\OpeningRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/avis')]
 class ReviewController extends AbstractController
@@ -19,6 +21,16 @@ class ReviewController extends AbstractController
     {
         return $this->render('review/index.html.twig', [
             'reviews' => $reviewRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/liste', name: 'app_review_list', methods: ['GET'])]
+    public function list(ReviewRepository $reviewRepository, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
+    {
+        return $this->render('review/list.html.twig', [
+            'reviews' => $reviewRepository->findAll(),
+            'openings' => $openingRepository->findAll(),
+            'companies' => $companyRepository->findAll(),
         ]);
     }
 

@@ -9,35 +9,35 @@
 import './styles/app.scss';
 require('bootstrap');
 
-import * as noUiSlider from 'nouislider'
-import 'nouislider/dist/nouislider.css'
+// import * as noUiSlider from 'nouislider'
+// import 'nouislider/dist/nouislider.css'
 
-//do switch case
 
-const sliderPrice = document.getElementById('price-slider')
 
-if (sliderPrice) {
-    const rangePrice = noUiSlider.create(sliderPrice, {
-        start: [0, 100000],
-        connect: true,
-        range: {
-            min: 0,
-            max: 100000,
-        },
-    })
-    const minPrice = document.getElementById('minPrice')
-    const maxPrice = document.getElementById('maxPrice')
+// const sliderPrice = document.getElementById('price-slider')
 
-    rangePrice.on('slide', function (values, handle) {
-        console.log(values, handle)
-        // if (handle === 0) {
-        //     minPrice.value = Math.round(values[0])
-        // }
-        // if (handle === 1) {
-        //     maxPrice.value = Math.round(values[1])
-        // }
-    })
-}
+// if (sliderPrice) {
+//     const rangePrice = noUiSlider.create(sliderPrice, {
+//         start: [0, 100000],
+//         connect: true,
+//         range: {
+//             min: 0,
+//             max: 100000,
+//         },
+//     })
+//     const minPrice = document.getElementById('minPrice')
+//     const maxPrice = document.getElementById('maxPrice')
+
+//     rangePrice.on('slide', function (values, handle) {
+//         console.log(values, handle)
+//         if (handle === 0) {
+//             minPrice.value = Math.round(values[0])
+//         }
+//         if (handle === 1) {
+//             maxPrice.value = Math.round(values[1])
+//         }
+//     })
+// }
 
 // const sliderYear = document.getElementById('year-slider')
 
@@ -88,18 +88,18 @@ if (sliderPrice) {
 //     })
 // }
 
-function slide(id) {
-    const slider = document.getElementById(id)
+// function slide(id) {
+//     const slider = document.getElementById(id)
 
-    if (slider) {
-        noUiSlider.create(slider, {
-            start: [20, 80],
-            connect: true,
-            range: {
-                min: 0,
-                max: 100,
-            },
-        })
-    }
-}
+//     if (slider) {
+//         noUiSlider.create(slider, {
+//             start: [20, 80],
+//             connect: true,
+//             range: {
+//                 min: 0,
+//                 max: 100,
+//             },
+//         })
+//     }
+// }
 
