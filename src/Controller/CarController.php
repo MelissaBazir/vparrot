@@ -7,6 +7,8 @@ use App\Entity\Car;
 use App\Form\CarType;
 use App\Form\SearchForm;
 use App\Repository\CarRepository;
+use App\Repository\CompanyRepository;
+use App\Repository\OpeningRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +21,7 @@ class CarController extends AbstractController
 {
     // Cars displayed in cards for customer
     #[Route('/occasions', name: 'occasions_list', methods: ['GET'])]
-    public function list(CarRepository $carRepository, Request $request): Response
+    public function list(CarRepository $carRepository, Request $request, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
     {
         $data = new SearchData();
         $data->page = $request->get('page',1);
@@ -27,6 +29,8 @@ class CarController extends AbstractController
         $form->handleRequest($request);
         return $this->render('car/list.html.twig', [
             'cars' => $carRepository->findSearch($data),
+            'openings' => $openingRepository->findAll(),
+            'companies' => $companyRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }

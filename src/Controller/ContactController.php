@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\CompanyRepository;
+use App\Repository\OpeningRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +19,7 @@ class ContactController extends AbstractController
      * @Route("/contact", name="contact")
      */
     #[Route(path:"/contact", name:"contact_index")]
-    public function index(Request $request, MailerInterface $mailer): Response
+    public function index(Request $request, MailerInterface $mailer, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
     {
         // Email sending
         $form = $this->createForm(ContactType::class);
@@ -36,6 +38,8 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_index');
         }
         return $this->render('contact/index.html.twig', [
+            'openings' => $openingRepository->findAll(),
+            'companies' => $companyRepository->findAll(),
             'form' => $form->createView()
         ]);
     }
