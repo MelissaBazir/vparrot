@@ -7,6 +7,7 @@
         <h1>Ne nous croyez pas sur parole, fiez-vous à nos clients</h1>
         {% for review in reviews %}
             <h2> {{review.title}} </h2>
+            <p>{{review.score}}</p>
             <p> {{review.textReview}} </p>
         {% endfor %}
     </div>

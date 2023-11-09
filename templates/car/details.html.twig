@@ -28,6 +28,10 @@
                 <td>{{ car.price }}</td>
             </tr>
             <tr>
+                <th>Image</th>
+                <td><img src="{{ car.image }}" alt="not working"></td>
+            </tr>
+            <tr>
                 <th>Mise en ligne le</th>
                 <td>{{ car.createdAt ? car.createdAt|date('d/m/Y') : '' }}</td>
             </tr>
@@ -38,7 +42,7 @@
     <a href="{{ path('occasions_list') }}">Retour à la liste</a>
 
     {# Renvoyer vers contact form et ajout auto du titre #}
-    <a href="{{ path('app_car_edit', {'slug': car.slug}) }}">En savoir plus</a>
+    <a href="{{ path('contact_index') }}">En savoir plus</a>
 
     
 {% endblock %}

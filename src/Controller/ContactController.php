@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Car;
 use App\Form\ContactType;
+use Symfony\Component\Mime\Email;
 use App\Repository\CompanyRepository;
 use App\Repository\OpeningRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class ContactController extends AbstractController
@@ -21,9 +22,13 @@ class ContactController extends AbstractController
     #[Route(path:"/contact", name:"contact_index")]
     public function index(Request $request, MailerInterface $mailer, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
     {
+        $car = new Car;
+        $carTitle = $car->getTitle();
+        
         // Email sending
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
 
             $email = (new Email())
@@ -37,10 +42,12 @@ class ContactController extends AbstractController
             $this->addFlash('success', 'Votre message a bien été envoyé');
             return $this->redirectToRoute('contact_index');
         }
+        dump();
         return $this->render('contact/index.html.twig', [
             'openings' => $openingRepository->findAll(),
             'companies' => $companyRepository->findAll(),
             'form' => $form->createView()
+            
         ]);
     }
 }

@@ -12,11 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'main')]
-    public function index(OpeningRepository $openingRepository, ServiceRepository $serviceRepository, CompanyRepository $companyRepository): Response
+    public function index(OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
     {
         return $this->render('main/index.html.twig', [
             'openings' => $openingRepository->findAll(),
-            'services'=> $serviceRepository->findAll(),
             'companies' => $companyRepository->findAll(),
         ]);
     }

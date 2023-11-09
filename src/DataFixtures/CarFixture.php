@@ -28,6 +28,7 @@ class CarFixture extends Fixture
             $car->setYear($faker->year());
             $car->setMileage($faker->randomNumber(6));
             $car->setPrice($faker->randomNumber(5, true));
+            $car->setImage('https://picsum.photos/200/100');
             $manager->persist($car);
 
             $this->addReference('car-'.$this->counter, $car);
