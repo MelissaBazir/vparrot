@@ -16,6 +16,7 @@ class CarType extends AbstractType
             ->add('year')
             ->add('mileage')
             ->add('price')
+            ->add('image')
             // ->add('created_at')
             // ->add('slug')
         ;

@@ -14,7 +14,7 @@ class ReviewFixture extends Fixture implements DependentFixtureInterface
     {
         $faker = Factory::create();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 21; $i++) {
             $review = new Review();
             $review->setTitle($faker->words(3, true));
             $review->setTextReview($faker->sentences(3, true));

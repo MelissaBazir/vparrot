@@ -11,7 +11,6 @@
             <div class="col-12">
                 <h1>Découvrez nos occasions - Arrivages tous les jours</h1>
             </div>
-            
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
@@ -21,13 +20,17 @@
                         <div class="grid">
                             {% for car in cars %}
                                 {% include 'car/_card.html.twig' with {car: car} only %}
+                            {% else %}
+                                <p>Aucune annonce ne correspond à vos critères</p>
                             {% endfor %}
                         </div>
-                        <div>
+                        <div class="mt-4">
                             {{ knp_pagination_render(cars) }}
                         </div>
                     </div>
                 </div>
+
+                
 
                 
             </div>

@@ -12,7 +12,7 @@ class OpeningFixture extends Fixture
     public function load(ObjectManager $manager): void
     {
         
-        $weekdays = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+        $weekdays = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
 
         foreach ($weekdays as $weekday) {
             $opening = new Opening();

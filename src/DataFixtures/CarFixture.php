@@ -21,7 +21,7 @@ class CarFixture extends Fixture
     {
         $faker = Factory::create();
 
-        for($cars = 1; $cars <= 9; $cars++) {
+        for($cars = 1; $cars <= 21; $cars++) {
             $car = new Car();
             $car->setTitle($faker->words(3, true));
             $car->setSlug($this->slugger->slug($car->getTitle())->lower());
