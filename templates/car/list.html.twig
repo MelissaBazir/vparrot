@@ -11,20 +11,16 @@
             <div class="col-12">
                 <h1>Découvrez nos occasions - Arrivages tous les jours</h1>
             </div>
-            <div class="container">
+            <div class="container js-filter">
                 <div class="row">
                     <div class="col-md-3">
                         {% include 'car/_filter.html.twig' with {form: form} only %}
                     </div>
                     <div class="col-md-9">
-                        <div class="grid">
-                            {% for car in cars %}
-                                {% include 'car/_card.html.twig' with {car: car} only %}
-                            {% else %}
-                                <p>Aucune annonce ne correspond à vos critères</p>
-                            {% endfor %}
+                        <div class="grid js-filter-content">
+                            {% include 'car/_cars.html.twig' %}
                         </div>
-                        <div class="mt-4">
+                        <div class="mt-4 js-filter-pagination">
                             {{ knp_pagination_render(cars) }}
                         </div>
                     </div>

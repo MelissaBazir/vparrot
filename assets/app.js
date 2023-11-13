@@ -11,6 +11,9 @@ require('bootstrap');
 
 import * as noUiSlider from 'nouislider'
 import 'nouislider/dist/nouislider.css'
+import Filter from './modules/Filter'
+
+new Filter(document.querySelector('.js-filter'))
 
 
 
@@ -39,6 +42,9 @@ if (sliderPrice) {
             maxPrice.value = Math.round(values[1])
         }
     })
+    rangePrice.on('end', function (values, handle) {
+        minPrice.dispatchEvent(new Event('change'))
+    })
 }
 
 const sliderYear = document.getElementById('year-slider')
@@ -56,6 +62,7 @@ if (sliderYear) {
         },
     })
     
+    
 
     rangeYear.on('slide', function (values, handle) {
         console.log(values, handle)
@@ -65,6 +72,9 @@ if (sliderYear) {
         if (handle === 1) {
             maxYear.value = Math.round(values[1])
         }
+    })
+    rangeYear.on('end', function (values, handle) {
+        minYear.dispatchEvent(new Event('change'))
     })
 }
 
@@ -92,6 +102,10 @@ if (sliderMileage) {
             maxMileage.value = Math.round(values[1])
         }
     })
+    rangeMileage.on('end', function (values, handle) {
+        minMileage.dispatchEvent(new Event('change'))
+    })
+
 }
 
 // function slide(element) {

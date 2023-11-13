@@ -12,6 +12,7 @@ use App\Repository\ImageRepository;
 use App\Repository\OpeningRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,8 +29,15 @@ class CarController extends AbstractController
         $data->page = $request->get('page', 1);
         $form = $this->createForm(SearchForm::class, $data);
         $form->handleRequest($request);
+        $cars = $carRepository->findSearch($data);
+        // if Ajax request, we get a Json response
+        if ($request->get('ajax')) {
+            return new JsonResponse([
+                'content' => $this->renderView('car/_cars.html.twig', ['cars' => $cars])
+            ]);
+        }
         return $this->render('car/list.html.twig', [
-            'cars' => $carRepository->findSearch($data),
+            'cars' => $cars,
             'images' => $imageRepository->findAll(),
             'openings' => $openingRepository->findAll(),
             'companies' => $companyRepository->findAll(),
