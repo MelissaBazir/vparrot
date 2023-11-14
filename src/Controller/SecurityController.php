@@ -12,7 +12,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/connexion', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils,OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if user is already connected, he's redirected to his account
         if ($this->getUser()) {
@@ -27,8 +27,6 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername, 
             'error' => $error,
-            'openings' => $openingRepository->findAll(),
-            'companies' => $companyRepository->findAll(),
         ]);
     }
 

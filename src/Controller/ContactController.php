@@ -20,7 +20,7 @@ class ContactController extends AbstractController
      * @Route("/contact", name="contact")
      */
     #[Route(path:"/contact", name:"contact_index")]
-    public function index(Request $request, MailerInterface $mailer, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
+    public function index(Request $request, MailerInterface $mailer): Response
     {
         $car = new Car;
         $carTitle = $car->getTitle();
@@ -43,8 +43,6 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_index');
         }
         return $this->render('contact/index.html.twig', [
-            // 'openings' => $openingRepository->findAll(),
-            // 'companies' => $companyRepository->findAll(),
             'form' => $form->createView()
             
         ]);

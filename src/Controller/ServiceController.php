@@ -25,12 +25,10 @@ class ServiceController extends AbstractController
     }
 
     #[Route('/services', name: 'app_service_list', methods: ['GET'])]
-    public function list(ServiceRepository $serviceRepository, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
+    public function list(ServiceRepository $serviceRepository): Response
     {
         return $this->render('service/list.html.twig', [
             'services' => $serviceRepository->findAll(),
-            'openings' => $openingRepository->findAll(),
-            'companies' => $companyRepository->findAll(),
         ]);
     }
 
