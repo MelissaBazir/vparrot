@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block title %}Garage V. PARROT - Contact{% endblock %}
 {% block body %}
-    <div class="container">
+    <div class="container d-flex justify-content-center">
+    <h1 class="my-6">Nous contacter</h1>
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
                 {{message}}
             </div>
+    </div>
         {% endfor %}
     </div>
     {{ form_start(form) }}
-        <div class="container">
+        <div class="container d-flex justify-content-center">
             <div class="d-flex flex-column flex-sm-col w-50">
             {{ form(form) }}
             </div>

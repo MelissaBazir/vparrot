@@ -23,19 +23,18 @@ class ContactType extends AbstractType
                 'minlength' => '2',
                 'maxlength' => '50',
                 'autofocus' => true,
+                'placeholder' => 'Prénom'
             ],
-            'label'=> 'Prénom',
-            'label_attr' => [
-                'class'=> 'form-label mb-3',
-            ]
+            'label'=> false,
         ])
             ->add('lastname', TextType::class, [
             'attr' => [
                 'class' => 'form-control',
                 'minlength' => '2',
                 'maxlength' => '50',
+                'placeholder' => 'Nom'
             ],
-            'label' => 'Nom',
+            'label' => false,
             'label_attr' => [
                 'class' => 'form-label mb-3',
             ]
@@ -45,8 +44,9 @@ class ContactType extends AbstractType
                 'class' => 'form-control',
                 'minlength' => '2',
                 'maxlength' => '50',
+                'placeholder' => 'E-mail'
             ],
-            'label' => 'E-mail',
+            'label' => false,
             'label_attr' => [
                 'class' => 'form-label mb-3',
             ],
@@ -61,8 +61,9 @@ class ContactType extends AbstractType
                 'class' => 'form-control',
                 'minlength' => '10',
                 'maxlength' => '50',
+                'placeholder' => 'Téléphone'
             ],
-            'label' => 'Téléphone',
+            'label' => false,
             'label_attr' => [
                 'class' => 'form-label mb-3',
             ]
@@ -72,8 +73,9 @@ class ContactType extends AbstractType
                 'class' => 'form-control',
                 'minlength' => '2',
                 'maxlength' => '50',
+                'placeholder' => 'Sujet'
             ],
-            'label' => 'Sujet',
+            'label' => false,
             'label_attr' => [
                 'class' => 'form-label mb-3',
             ],
@@ -84,9 +86,10 @@ class ContactType extends AbstractType
             ->add('message', TextareaType::class, [
                 'attr' => [
                     'rows' => 6,
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'Entrez votre message ici ...'
                 ],
-                'label' => 'Message',
+            'label' => false,
             'label_attr' => [
                 'class' => 'form-label mb-3',
             ],

@@ -18,7 +18,7 @@ body {
     background-color: white;
 }
 
-.noUi-connect {
+.noUi-connect, .progress-bar {
     background: #d9777f;
 }
 
@@ -28,7 +28,7 @@ body {
 // @import "./node_modules/bootstrap/scss/bootstrap.scss";
 
 // Default variable overrides
-$body-bg: #fff;
+$body-bg: $light;
 $body-color: #111;
 
 

@@ -22,6 +22,7 @@
       
         {# if i'm connected only #}
         {% if app.user %}
+          <li class="nav-item"><a href="{{ path('app_profile') }}" class="nav-link">Gestion du site</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Mon compte</a></li>
           <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link">Me déconnecter</a></li>
         {% else %}

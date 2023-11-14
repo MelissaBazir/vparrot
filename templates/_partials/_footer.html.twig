@@ -1,27 +1,15 @@
 <div class='container-fluid'>
     <footer class="border-top py-5">
-    <div class="row d-flex justify-content-between">
-      <div class="col-6 col-md-3 mb-3">
+    <div class="row row-cols-1 d-flex justify-content-between">
+      <div class="col-3 mb-3">
         <h5>Nos coordonnées</h5>
         {{ render(controller('App\\Controller\\FooterController::contactDetails')) }}
-        {# <ul class="nav flex-column">
-          {% for company in companies %}
-            <li class="nav-item mb-2">Garage {{company.name}}</li>
-            <li class="nav-item mb-2">{{company.email}}</li>
-            <li class="nav-item mb-2">{{company.telephone}}</li>
-            <li class="nav-item mb-2">{{company.address}}</li>
-            <li class="nav-item mb-2">{{company.zipcode}}</li>
-            <li class="nav-item mb-2">{{company.city}}</li>
-          {% endfor %}
-        </ul> #}
-        <h5>Nos horaires d'ouverture</h5>
-        {{ render(controller('App\\Controller\\FooterController::hours')) }}
-        {# <ul class="nav flex-column">
-          {% for opening in openings %}
-            <li class="nav-item mb-2">{{opening.day}} : {{opening.amOpening}}h -  {{opening.amClosing}}h / {{opening.pmOpening}}h -  {{opening.pmClosing}}h</li>
-          {% endfor %}
-        </ul> #}
       </div>
+      <div class="col-3 mb-3">  
+        <h5>Nos horaires d'ouverture</h5>
+        {{ render(controller('App\\Controller\\FooterController::hours')) }}  
+      </div>
+    </div>
 
       
 
