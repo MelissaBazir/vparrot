@@ -42,10 +42,9 @@ class ContactController extends AbstractController
             $this->addFlash('success', 'Votre message a bien été envoyé');
             return $this->redirectToRoute('contact_index');
         }
-        dump();
         return $this->render('contact/index.html.twig', [
-            'openings' => $openingRepository->findAll(),
-            'companies' => $companyRepository->findAll(),
+            // 'openings' => $openingRepository->findAll(),
+            // 'companies' => $companyRepository->findAll(),
             'form' => $form->createView()
             
         ]);

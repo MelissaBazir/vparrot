@@ -23,7 +23,7 @@ class OpeningController extends AbstractController
     }
 
 
-    #[Route('/new', name: 'app_opening_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_opening_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $opening = new Opening();
@@ -51,7 +51,7 @@ class OpeningController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_opening_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_opening_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Opening $opening, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(OpeningType::class, $opening);

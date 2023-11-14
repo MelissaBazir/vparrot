@@ -13,10 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/avis')]
+
 class ReviewController extends AbstractController
 {
-    #[Route('/', name: 'app_review_index', methods: ['GET'])]
+    #[Route('/profil/avis', name: 'app_review_index', methods: ['GET'])]
     public function index(ReviewRepository $reviewRepository): Response
     {
         return $this->render('review/index.html.twig', [
@@ -24,7 +24,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('/liste', name: 'app_review_list', methods: ['GET'])]
+    #[Route('/avis', name: 'app_review_list', methods: ['GET'])]
     public function list(ReviewRepository $reviewRepository, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
     {
         return $this->render('review/list.html.twig', [
@@ -34,7 +34,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_review_new', methods: ['GET', 'POST'])]
+    #[Route('/profil/avis/nouveau', name: 'app_review_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $review = new Review();
@@ -54,7 +54,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_review_show', methods: ['GET'])]
+    #[Route('/profil/avis/{id}', name: 'app_review_show', methods: ['GET'])]
     public function show(Review $review): Response
     {
         return $this->render('review/show.html.twig', [
@@ -62,7 +62,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_review_edit', methods: ['GET', 'POST'])]
+    #[Route('/profil/avis/{id}/edit', name: 'app_review_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Review $review, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ReviewType::class, $review);
@@ -80,7 +80,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_review_delete', methods: ['POST'])]
+    #[Route('/profil/avis/{id}', name: 'app_review_delete', methods: ['POST'])]
     public function delete(Request $request, Review $review, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$review->getId(), $request->request->get('_token'))) {
