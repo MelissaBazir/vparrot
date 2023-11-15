@@ -6,8 +6,12 @@
     <div class="container">
         <h1>Toute une gamme de services professionnels pour vous satisfaire</h1>
         {% for service in services %}
-            <h2> {{service.title}} </h2>
-            <p> {{service.description}} </p>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{service.title}}</h5>
+                    <p class="card-text">{{service.description}}</p>
+                </div>
+            </div>
         {% endfor %}
     </div>
 

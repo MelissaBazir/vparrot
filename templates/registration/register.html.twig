@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Garage V. PARROT - Inscription{% endblock %}
+{% block title %}Garage V. PARROT - Nouvel Employé{% endblock %}
 
 {% block body %}
-<section class="container">
+<section class="container d-flex justify-content-center">
     <div class="row">
-        <div class="col">
-            <h1>Inscription</h1>
+        <div class="col-8">
+            <h1>Nouvel employé</h1>
 
             {{ form_errors(registrationForm) }}
 
             {{ form_start(registrationForm) }}
                 <fieldset class="mb-3">
-                    <legend>Mon identité</legend>
+                    <legend class="text-primary">Identité</legend>
                     {{ form_row(registrationForm.lastname) }}
                     {{ form_row(registrationForm.firstname) }}
                     {{ form_row(registrationForm.company) }}
                 </fieldset>
 
                 <fieldset class="mb-3">
-                    <legend>Mes coordonnées</legend>
+                    <legend class="text-primary">Coordonnées</legend>
                     {{ form_row(registrationForm.email) }}
                     {{ form_row(registrationForm.telephone) }}
                     {{ form_row(registrationForm.plainPassword, {
@@ -30,9 +30,9 @@
                 
                 {{ form_row(registrationForm.RGPDConsent) }}
 
-                <button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire</button>
+                <button type="submit" class="btn btn-dark btn-lg my-3">Valider</button>
+                <a href="{{ path('admin_user_index') }}" class="btn btn-dark btn-lg my-3">Retour à la liste</a>
             {{ form_end(registrationForm) }}
-                <a href="{{ path('admin_user_index') }}" class="btn btn-secondary btn-lg my-3">Retour à la liste</a>
         </div>
     </div>
 </section>

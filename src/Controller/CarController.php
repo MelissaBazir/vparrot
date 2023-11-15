@@ -11,6 +11,7 @@ use App\Repository\CompanyRepository;
 use App\Repository\ImageRepository;
 use App\Repository\OpeningRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +24,7 @@ class CarController extends AbstractController
 {
     // Cars displayed in cards for customer
     #[Route('/occasions', name: 'occasions_list', methods: ['GET'])]
-    public function list(CarRepository $carRepository, Request $request, ImageRepository $imageRepository, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
+    public function list(CarRepository $carRepository, Request $request, ImageRepository $imageRepository): Response
     {
         $data = new SearchData();
         $data->page = $request->get('page', 1);
@@ -39,17 +40,20 @@ class CarController extends AbstractController
         return $this->render('car/list.html.twig', [
             'cars' => $cars,
             'images' => $imageRepository->findAll(),
-            'openings' => $openingRepository->findAll(),
-            'companies' => $companyRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
 
     #[Route('/profil/occasions', name: 'app_car_index', methods: ['GET'])]
-    public function index(CarRepository $carRepository): Response
+    public function index(CarRepository $carRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $cars = $paginator->paginate(
+        $carRepository->findAll(),
+        $request->query->getInt('page', 1),
+        9
+        );
         return $this->render('car/index.html.twig', [
-            'cars' => $carRepository->findAll(),
+            'cars' => $cars,
         ]);
     }
 

@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Car index{% endblock %}
+{% block title %}Garage V. PARROT - Annonces voitures{% endblock %}
 
 {% block body %}
-    <h1>Car index</h1>
+<div class="container">
+    <h1>Liste des {{ cars.getTotalItemCount }} annonces de voitures</h1>
 
-    <table class="table">
+    <a href="{{ path('app_car_new') }}" class="btn btn-outline-secondary">Ajouter une nouvelle annonce</a>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Year</th>
-                <th>Mileage</th>
-                <th>Price</th>
-                <th>Created_at</th>
-                {# <th>Slug</th> #}
+                <th>Titre</th>
+                <th>Image</th>
+                <th>Année</th>
+                <th>Kilométrage</th>
+                <th>Prix</th>
+                <th>Date de création</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,23 +25,26 @@
             <tr>
                 <td>{{ car.id }}</td>
                 <td>{{ car.title }}</td>
+                <td>{{ car.image }}</td>
                 <td>{{ car.year }}</td>
-                <td>{{ car.mileage }}</td>
-                <td>{{ car.price }}</td>
+                <td>{{car.mileage | number_format(0, ',', ' ')}} km</td>
+                <td>{{car.price | number_format(0, ',', ' ')}} €</td>
                 <td>{{ car.createdAt ? car.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 {# <td>{{ car.slug }}</td> #}
                 <td>
-                    <a href="{{ path('app_car_show', {'slug': car.slug}) }}">show</a>
-                    <a href="{{ path('app_car_edit', {'slug': car.slug}) }}">edit</a>
+                    <a href="{{ path('app_car_edit', {'slug': car.slug}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Il n'y a aucune annonce actuellement</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_car_new') }}">Create new</a>
+    <div class="navigation d-flex justify-content-center">
+    {{ knp_pagination_render(cars) }}
+    </div>
+</div>
 {% endblock %}

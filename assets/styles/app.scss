@@ -15,11 +15,15 @@ $bs-link-hover-color: var($secondary);
 
 
 body {
-    background-color: white;
+    background-color: #F2F2F2;
 }
 
 .noUi-connect, .progress-bar {
     background: #d9777f;
+}
+
+.btn {
+    background-color: $dark;
 }
 
 
@@ -28,8 +32,8 @@ body {
 // @import "./node_modules/bootstrap/scss/bootstrap.scss";
 
 // Default variable overrides
-$body-bg: $light;
-$body-color: #111;
+$body-bg: #F2F2F2;
+$body-color: #262526;
 
 
 

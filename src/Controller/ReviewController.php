@@ -25,12 +25,10 @@ class ReviewController extends AbstractController
     }
 
     #[Route('/avis', name: 'app_review_list', methods: ['GET'])]
-    public function list(ReviewRepository $reviewRepository, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
+    public function list(ReviewRepository $reviewRepository): Response
     {
         return $this->render('review/list.html.twig', [
-            'reviews' => $reviewRepository->findAll(),
-            'openings' => $openingRepository->findAll(),
-            'companies' => $companyRepository->findAll(),
+            'reviews' => $reviewRepository->findBy(array('isApproved' => true)),
         ]);
     }
 

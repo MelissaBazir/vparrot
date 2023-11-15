@@ -1,11 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Car{% endblock %}
+{% block title %}Garage V. PARROT - Nouvelle Annonce{% endblock %}
 
 {% block body %}
-    <h1>Create new Car</h1>
+<div class="container d-flex justify-content-center">
+    <h1 class="my-5">Créer une annonce </h1>
+</div>
+<div class="container d-flex justify-content-center">
+    <div class="col-8">
+        {{ form_errors(form) }}
 
-    {{ include('car/_form.html.twig') }}
+        {{ form_start(form) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.image) }}
+            {{ form_row(form.year) }}
+            {{ form_row(form.mileage) }}
+            {{ form_row(form.price) }}
 
-    <a href="{{ path('app_car_index') }}">back to list</a>
+            <button type="submit" class="btn btn-primary my-3">Créer l'annonce</button>
+        
+            <a href="{{ path('app_car_index') }}" class="btn btn-dark my-3">Retour à la liste</a>
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}

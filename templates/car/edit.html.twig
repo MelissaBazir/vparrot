@@ -1,13 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Car{% endblock %}
+{% block title %}Garage V. PARROT - Modification Annonce{% endblock %}
 
 {% block body %}
-    <h1>Edit Car</h1>
+<div class="container d-flex justify-content-center">
+    <h1 class="my-5">Modifier l'annonce {{car.title}}</h1>
+</div>
+<div class="container d-flex justify-content-center">
+    <div class="col-8">
+        {{ form_errors(form) }}
 
-    {{ include('car/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ form_start(form) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.image) }}
+            {{ form_row(form.year) }}
+            {{ form_row(form.mileage) }}
+            {{ form_row(form.price) }}
 
-    <a href="{{ path('app_car_index') }}">back to list</a>
-
-    {{ include('car/_delete_form.html.twig') }}
+            <button type="submit" class="btn btn-primary my-3">Modifier</button>
+            {{ include('car/_delete_form.html.twig') }}
+            <a href="{{ path('app_car_index') }}" class="btn btn-outline-secondary my-3">Retour à la liste</a>
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}

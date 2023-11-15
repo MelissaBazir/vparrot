@@ -5,11 +5,21 @@
 {% block body %}
     <div class="container">
         <h1>Ne nous croyez pas sur parole, fiez-vous à nos clients</h1>
+        <div class="grid mb-4">
         {% for review in reviews %}
-            <h2> {{review.title}} </h2>
-            <p>{{review.score}}</p>
-            <p> {{review.textReview}} </p>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{review.title}}</h5>
+                    <h6 class="card-subtitle">{{review.score}}/4</h6>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <p class="card-text">{{review.textReview}}</p>
+                </div>
+            </div>
         {% endfor %}
+        </div>
     </div>
 
 {% endblock %}

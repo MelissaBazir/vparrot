@@ -9,22 +9,22 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="{{ path('main') }}">Accueil
+          <a class="nav-link link-primary active" href="{{ path('main') }}">Accueil
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
-        <li class="nav-item"><a href="{{ path('occasions_list') }}" class="nav-link">Nos véhicules d'occasion</a></li>
-        <li class="nav-item"><a href="{{ path('app_service_list') }}" class="nav-link">Nos services</a></li>
-        <li class="nav-item"><a href="{{ path('app_review_list') }}" class="nav-link">Avis</a></li>
-        <li class="nav-item"><a href="{{ path('contact_index') }}" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="{{ path('occasions_list') }}" class="nav-link link-primary">Nos véhicules d'occasion</a></li>
+        <li class="nav-item"><a href="{{ path('app_service_list') }}" class="nav-link link-primary">Nos services</a></li>
+        <li class="nav-item"><a href="{{ path('app_review_list') }}" class="nav-link link-primary">Avis</a></li>
+        <li class="nav-item"><a href="{{ path('contact_index') }}" class="nav-link link-primary">Contact</a></li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
       
         {# if i'm connected only #}
         {% if app.user %}
-          <li class="nav-item"><a href="{{ path('app_profile') }}" class="nav-link">Gestion du site</a></li>
+          <li class="nav-item"><a href="{{ path('app_profile') }}" class="nav-link link-primary">Gestion du site</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Mon compte</a></li>
-          <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link">Me déconnecter</a></li>
+          <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link link-primary">Me déconnecter</a></li>
         {% else %}
         <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link">Espace sécurisé</a></li>
         {% endif %}
