@@ -48,9 +48,9 @@ class CarController extends AbstractController
     public function index(CarRepository $carRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $cars = $paginator->paginate(
-        $carRepository->findAll(),
-        $request->query->getInt('page', 1),
-        9
+            $carRepository->findAll(),
+            $request->query->getInt('page', 1),
+            9
         );
         return $this->render('car/index.html.twig', [
             'cars' => $cars,

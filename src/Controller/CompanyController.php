@@ -6,6 +6,7 @@ use App\Entity\Company;
 use App\Form\CompanyType;
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class CompanyController extends AbstractController
 {
     #[Route('/', name: 'app_company_index', methods: ['GET'])]
-    public function index(CompanyRepository $companyRepository): Response
+    public function index(CompanyRepository $companyRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $companies = $paginator->paginate(
+            $companyRepository->findAll(),
+            $request->query->getInt('page', 1),
+            9
+        );
         return $this->render('company/index.html.twig', [
-            'companies' => $companyRepository->findAll(),
+            'companies' => $companies,
         ]);
     }
 
