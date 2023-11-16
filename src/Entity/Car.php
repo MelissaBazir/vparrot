@@ -33,8 +33,6 @@ class Car
     private ?int $price = null;
 
 
-    #[ORM\OneToMany(mappedBy: 'car', targetEntity: Image::class)]
-    private Collection $images;
 
     #[ORM\OneToMany(mappedBy: 'car', targetEntity: Contact::class)]
     private Collection $contacts;
@@ -44,7 +42,6 @@ class Car
 
     public function __construct()
     {
-        $this->images = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
         $this->contacts = new ArrayCollection();
     }
@@ -98,36 +95,6 @@ class Car
     public function setPrice(int $price): static
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Image>
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Image $image): static
-    {
-        if (!$this->images->contains($image)) {
-            $this->images->add($image);
-            $image->setCar($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Image $image): static
-    {
-        if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getCar() === $this) {
-                $image->setCar(null);
-            }
-        }
 
         return $this;
     }

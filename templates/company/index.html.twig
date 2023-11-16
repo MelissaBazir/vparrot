@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container">
-    <h1>Liste des {{ companies.getTotalItemCount }} sociétés</h1>
+    <h1>Gestion des coordonnées de sociétés</h1>
 
     <a href="{{ path('app_company_new') }}" class="btn btn-outline-secondary">Ajouter une nouvelle société</a>
     <table class="table table-hover">
@@ -46,43 +46,4 @@
     {{ knp_pagination_render(companies) }}
     </div>
 </div>
-    {# <h1>Company index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Telephone</th>
-                <th>Address</th>
-                <th>Zipcode</th>
-                <th>City</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for company in companies %}
-            <tr>
-                <td>{{ company.id }}</td>
-                <td>{{ company.name }}</td>
-                <td>{{ company.email }}</td>
-                <td>{{ company.telephone }}</td>
-                <td>{{ company.address }}</td>
-                <td>{{ company.zipcode }}</td>
-                <td>{{ company.city }}</td>
-                <td>
-                    <a href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
-                    <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_company_new') }}">Create new</a> #}
 {% endblock %}
