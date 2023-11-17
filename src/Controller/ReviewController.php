@@ -31,14 +31,19 @@ class ReviewController extends AbstractController
     }
 
     #[Route('/avis', name: 'app_review_list', methods: ['GET'])]
-    public function list(ReviewRepository $reviewRepository): Response
+    public function list(ReviewRepository $reviewRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $reviews = $paginator->paginate(
+        $reviewRepository->findBy(array('isApproved' => true)),
+        $request->query->getInt('page', 1),
+        3
+        );
         return $this->render('review/list.html.twig', [
-            'reviews' => $reviewRepository->findBy(array('isApproved' => true)),
+            'reviews' => $reviews,
         ]);
     }
 
-    #[Route('/profil/avis/nouveau', name: 'app_review_new', methods: ['GET', 'POST'])]
+    #[Route('/avis/nouveau', name: 'app_review_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $review = new Review();

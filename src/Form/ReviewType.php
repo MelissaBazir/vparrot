@@ -7,6 +7,7 @@ use App\Entity\Review;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -50,11 +51,14 @@ class ReviewType extends AbstractType
                 'class' => 'form-control',
                 'minlength' => '1',
             ],
-            'label' => 'Note attribuée',
+            'label' => 'Note attribuée (de 1 à 4)',
             'required' => true,
             'label_attr' => [
                 'class' => 'form-label mb-3',
             ]
+            ])
+            ->add('isApproved', CheckboxType::class, [
+            'label'=> 'Approuvé',
             ])
             // ->add('user', EntityType::class, [
             //     'class' => User::class,

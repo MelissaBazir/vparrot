@@ -26,6 +26,10 @@ body {
     background-color: $dark;
 }
 
+ul {
+    list-style-type: none;
+}
+
 
 
 @import '~bootstrap/scss/bootstrap';

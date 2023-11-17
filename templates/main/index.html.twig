@@ -32,9 +32,14 @@
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Bienvenue au garage V. Parrot</h1>
             <p class="lead">Installé à Toulouse depuis 2021, notre garage est à votre service dans nos nombreux domaines d'expertise</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <a href="{{ path('occasions_list') }}" class="btn btn-dark btn-lg px-4 me-md-2">Voir nos véhicules d'occasion</a>
-                <a href="{{ path('app_service_list') }}" class="btn btn-outline-secondary btn-lg px-4">Découvrir nos services</a>
+                <a href="{{ path('occasions_list') }}" class="btn btn-primary btn-lg px-4 me-md-2">Voir nos véhicules d'occasion</a>
             </div>
+            <h4 class="mt-5">Toute une gamme de services professionnels <br> pour vous satisfaire</h4>
+            <ul>
+            {% for service in services %}
+                <li> {{service.title|title}} </li>
+            {% endfor %}
+            </ul>
         </div>
     </div>
     </div>

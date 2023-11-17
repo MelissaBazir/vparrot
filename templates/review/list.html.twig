@@ -4,22 +4,30 @@
 
 {% block body %}
     <div class="container">
-        <h1>Ne nous croyez pas sur parole, fiez-vous à nos clients</h1>
+        <h1>Ne nous croyez pas sur parole, <br> Fiez-vous à nos clients</h1>
+        <a href="{{ path('app_review_new') }}" class="btn btn-outline-secondary px-4 me-md-2 my-3">Partager mon avis</a>
         <div class="grid mb-4">
+
         {% for review in reviews %}
             <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{review.title}}</h5>
-                    <h6 class="card-subtitle">{{review.score}}/4</h6>
-                    <i class="fa-solid fa-star"></i>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <p class="card-text">{{review.textReview}}</p>
+                <i class="fa-solid fa-quote-left fa-2xl" style="color: #d9777f;"></i>
+                <div class="card-body d-flex flex-column align-items-center">
+                    <h5 class="card-title">{{review.title|title}}</h5>
+                    <span>
+                    {% for i in 1 .. review.score %}
+                        <i class="fa-solid fa-star my-2" style="color: #ffe01a;"></i>
+                    {% endfor %}
+                    </span>
+                    <p class="card-text text-center">{{review.textReview}}</p>
                 </div>
             </div>
         {% endfor %}
         </div>
+
+        <div class="navigation d-flex justify-content-center">
+            {{ knp_pagination_render(reviews) }}
+        </div>
+
     </div>
 
 {% endblock %}

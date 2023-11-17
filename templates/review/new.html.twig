@@ -12,7 +12,10 @@
 
         {{ form_start(form) }}
                 {{ include('review/_form.html.twig', {'button_label': 'Créer l\'avis'}) }}
-                <a href="{{ path('app_review_index') }}" class="btn btn-dark my-3">Retour à la liste</a>        {{ form_end(form) }}
+                {% if app.user %}
+                <a href="{{ path('app_review_index') }}" class="btn btn-dark mb-3">Retour à la liste</a>     
+                {% endif %}
+                
         {{ form_end(form) }}
     </div>
 </div>
