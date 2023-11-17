@@ -4,31 +4,32 @@ namespace App\DataFixtures;
 
 use App\Entity\Opening;
 use Doctrine\Persistence\ObjectManager;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-;
+use Doctrine\Bundle\FixturesBundle\Fixture;;
 
 class OpeningFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        
-        $weekdays = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
 
+        $weekdays = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+        $i = 1;
         foreach ($weekdays as $weekday) {
             $opening = new Opening();
             $opening->setDay($weekday);
-            $opening->setAmOpening('9');
-            $opening->setAmClosing('12');
-            $opening->setPmOpening('14');
-            $opening->setPmClosing('18');
+            $opening->setDayOrder($i);
+            $opening->setAmOpening('9h');
+            $opening->setAmClosing('12h');
+            $opening->setPmOpening('14h');
+            $opening->setPmClosing('18h');
 
             // Get reference to company
             $company = $this->getReference('company');
             $opening->setCompany($company);
 
             $manager->persist($opening);
+            $i++;
         }
-        
+        unset($i);
 
         $manager->flush();
     }

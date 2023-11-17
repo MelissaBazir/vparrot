@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\OpeningRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: OpeningRepository::class)]
 class Opening
@@ -15,6 +17,10 @@ class Opening
 
     #[ORM\Column(length: 15)]
     private ?string $day = null;
+
+    #[ORM\Column]
+    #[Assert\GreaterThan(0)]
+    private ?int $dayOrder = null;
 
     #[ORM\Column(length: 10)]
     private ?string $am_opening = null;
@@ -45,6 +51,18 @@ class Opening
     public function setDay(string $day): static
     {
         $this->day = $day;
+
+        return $this;
+    }
+
+    public function getDayOrder(): ?int
+    {
+        return $this->dayOrder;
+    }
+
+    public function setDayOrder(int $dayOrder): static
+    {
+        $this->dayOrder = $dayOrder;
 
         return $this;
     }

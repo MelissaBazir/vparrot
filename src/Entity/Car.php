@@ -32,18 +32,12 @@ class Car
     #[ORM\Column]
     private ?int $price = null;
 
-
-
-    #[ORM\OneToMany(mappedBy: 'car', targetEntity: Contact::class)]
-    private Collection $contacts;
-
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
-        $this->contacts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,35 +93,7 @@ class Car
         return $this;
     }
 
-    /**
-     * @return Collection<int, Contact>
-     */
-    public function getContacts(): Collection
-    {
-        return $this->contacts;
-    }
 
-    public function addContact(Contact $contact): static
-    {
-        if (!$this->contacts->contains($contact)) {
-            $this->contacts->add($contact);
-            $contact->setCar($this);
-        }
-
-        return $this;
-    }
-
-    public function removeContact(Contact $contact): static
-    {
-        if ($this->contacts->removeElement($contact)) {
-            // set the owning side to null (unless already changed)
-            if ($contact->getCar() === $this) {
-                $contact->setCar(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getImage(): ?string
     {
