@@ -20,6 +20,7 @@ class ReviewFixture extends Fixture implements DependentFixtureInterface
             $review->setTextReview($faker->sentences(3, true));
             $review->setScore(rand(3, 4));
             $review->setIsApproved(false);
+            $review->setEmail($faker->email);
 
             // get user reference
             $user = $this->getReference('usr-' . rand(1, 5));

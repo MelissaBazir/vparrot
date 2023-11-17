@@ -1,13 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Review{% endblock %}
+{% block title %}Garage V. PARROT - Modification Avis{% endblock %}
 
 {% block body %}
-    <h1>Edit Review</h1>
+<div class="container d-flex justify-content-center">
+    <h1 class="my-5">Modifier l'avis {{review.title}} </h1>
+    
+</div>
+<div class="container d-flex justify-content-center">
+    <div class="col-3">
+    <a href="{{ path('app_review_index') }}" class="btn btn-outline-secondary my-3">Retour à la liste</a>
+        {{ form_errors(form) }}
 
-    {{ include('review/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ form_start(form) }}
 
-    <a href="{{ path('app_review_index') }}">back to list</a>
-
-    {{ include('review/_delete_form.html.twig') }}
+            {{ include('review/_form.html.twig', {'button_label': 'Modifier'}) }}
+            {{ include('review/_delete_form.html.twig') }}
+        
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}

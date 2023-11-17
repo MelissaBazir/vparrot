@@ -14,7 +14,7 @@ class ServiceFixture extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
-    for ($serv = 0; $serv < 10; $serv++) {
+    for ($serv = 0; $serv < 3; $serv++) {
         $service = new Service();
         $service->setTitle($faker->words(3, true)); 
         $service->setDescription($faker->sentences(3, true));

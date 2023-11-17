@@ -29,7 +29,7 @@
                 <td>{{ car.year }}</td>
                 <td>{{car.mileage | number_format(0, ',', ' ')}} km</td>
                 <td>{{car.price | number_format(0, ',', ' ')}} €</td>
-                <td>{{ car.createdAt ? car.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ car.createdAt ? car.createdAt|date('d/m/Y') : '' }}</td>
                 {# <td>{{ car.slug }}</td> #}
                 <td>
                     <a href="{{ path('app_car_edit', {'slug': car.slug}) }}">Modifier</a>

@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Review{% endblock %}
+{% block title %}Garage V. PARROT - Nouvel Avis{% endblock %}
 
 {% block body %}
-    <h1>Create new Review</h1>
+<div class="container d-flex justify-content-center">
+    <h1 class="my-5">Créer un avis </h1>
+</div>
+<div class="container d-flex justify-content-center">
+    <div class="col-8">
+        {{ form_errors(form) }}
 
-    {{ include('review/_form.html.twig') }}
-
-    <a href="{{ path('app_review_index') }}">back to list</a>
+        {{ form_start(form) }}
+                {{ include('review/_form.html.twig', {'button_label': 'Créer l\'avis'}) }}
+                <a href="{{ path('app_review_index') }}" class="btn btn-dark my-3">Retour à la liste</a>        {{ form_end(form) }}
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}
+
+

@@ -73,8 +73,6 @@ class CarType extends AbstractType
                 'class' => 'form-label mb-3',
             ]
         ])
-            // ->add('created_at')
-            // ->add('slug')
         ;
     }
 

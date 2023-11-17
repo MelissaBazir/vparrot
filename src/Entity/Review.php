@@ -33,6 +33,8 @@ class Review
     #[ORM\Column(options: ['default' => false])]
     private ?bool $isApproved = null;
 
+    #[ORM\Column(length: 180)]
+    private ?string $email = null;
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
     #[ORM\JoinColumn(nullable: false)]
@@ -95,6 +97,17 @@ class Review
         return $this;
     }
 
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
 
 
     public function getUser(): ?User

@@ -1,20 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Review index{% endblock %}
+{% block title %}Garage V. PARROT - Gestion Avis{% endblock %}
 
 {% block body %}
-    <h1>Review index</h1>
+<div class="container">
+    <h1 class="mb-4">Liste des {{ reviews.getTotalItemCount }} avis</h1>
 
+    <a href="{{ path('app_review_new') }}" class="btn btn-outline-secondary">Ajouter un nouvel avis</a>
     <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>TextReview</th>
-                <th>Score</th>
-                <th>IsApproved</th>
-                <th>Created_at</th>
-                <th>actions</th>
+                <th>Titre</th>
+                <th>Texte de l'avis</th>
+                <th>Note attribuée</th>
+                <th>Approuvé</th>
+                <th>E-mail de l'auteur</th>
+                <th>Date de création</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -24,20 +27,25 @@
                 <td>{{ review.title }}</td>
                 <td>{{ review.textReview }}</td>
                 <td>{{ review.score }}</td>
-                <td>{{ review.isApproved ? 'Yes' : 'No' }}</td>
-                <td>{{ review.createdAt ? review.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ review.isApproved ? 'Oui' : 'Non' }}</td>
+                <td>{{ review.email }}</td>
+                <td>{{ review.createdAt ? review.createdAt|date('d/m/Y') : '' }}</td>
+                
                 <td>
-                    <a href="{{ path('app_review_show', {'id': review.id}) }}">show</a>
-                    <a href="{{ path('app_review_edit', {'id': review.id}) }}">edit</a>
+                    <a href="{{ path('app_review_edit', {'id': review.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Il n'y a aucun avis actuellement</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_review_new') }}">Create new</a>
+    <div class="navigation d-flex justify-content-center">
+    {{ knp_pagination_render(reviews) }}
+    </div>
+
+</div>
 {% endblock %}

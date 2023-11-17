@@ -8,6 +8,7 @@ use App\Repository\ReviewRepository;
 use App\Repository\CompanyRepository;
 use App\Repository\OpeningRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,10 +18,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ReviewController extends AbstractController
 {
     #[Route('/profil/avis', name: 'app_review_index', methods: ['GET'])]
-    public function index(ReviewRepository $reviewRepository): Response
+    public function index(ReviewRepository $reviewRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $reviews = $paginator->paginate(
+        $reviewRepository->findAll(),
+        $request->query->getInt('page', 1),
+        9
+        );
         return $this->render('review/index.html.twig', [
-            'reviews' => $reviewRepository->findAll(),
+            'reviews' => $reviews,
         ]);
     }
 
