@@ -22,16 +22,17 @@
         {% for opening in openings %}
             <tr>
                 <td>{{ opening.day }}</td>
-                <td>{% if opening.amOpening == 'Fermé' %}Fermé {% else %} {{opening.amOpening}} h
+
+                <td>{% if opening.amOpening == 'Fermé' %}Fermé {% else %} {{opening.amOpening}}
                     {% endif %}
                 </td>
-                <td>{% if opening.amClosing == 'Fermé' %}Fermé {% else %} {{opening.amClosing}} h
+                <td>{% if opening.amClosing == 'Fermé' %}Fermé {% else %} {{opening.amClosing}}
                     {% endif %}
                 </td>
-                <td>{% if opening.pmOpening == 'Fermé' %}Fermé {% else %} {{opening.pmOpening}} h
+                <td>{% if opening.pmOpening == 'Fermé' %}Fermé {% else %} {{opening.pmOpening}}
                     {% endif %}
                 </td>
-                <td>{% if opening.pmClosing == 'Fermé' %}Fermé {% else %} {{opening.pmClosing}} h
+                <td>{% if opening.pmClosing == 'Fermé' %}Fermé {% else %} {{opening.pmClosing}}
                     {% endif %}
                 </td>
 

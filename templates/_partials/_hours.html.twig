@@ -4,13 +4,14 @@
         {% if opening.amOpening == 'Fermé' and opening.pmOpening == 'Fermé'  %}
             <li class="nav-item mb-2">{{opening.day|title}} : Fermé</li>
         {% elseif opening.pmOpening == 'Fermé' or opening.pmClosing == 'Fermé' %}
-            <li class="nav-item mb-2">{{opening.day|title}} : {{opening.amOpening}}h -  {{opening.amClosing}}h / Fermé</li>
+            <li class="nav-item mb-2">{{opening.day|title}} : {{opening.amOpening}} -  {{opening.amClosing}} / Fermé</li>
         {% elseif opening.amOpening == 'Fermé' or opening.amClosing == 'Fermé' %}
             <li class="nav-item mb-2">{{opening.day|title}} : Fermé / {{opening.pmOpening}}h -  {{opening.pmClosing}}h</li>
         {% else %}
-            <li class="nav-item mb-2">{{opening.day|title}} : {{opening.amOpening}}h -  {{opening.amClosing}}h / {{opening.pmOpening}}h -  {{opening.pmClosing}}h</li>
+            <li class="nav-item mb-2">{{opening.day|title}} : {{opening.amOpening}} -  {{opening.amClosing}} / {{opening.pmOpening}} -  {{opening.pmClosing}}</li>
         {% endif %}
     {% endfor %}
 </ul>
+
 
 
