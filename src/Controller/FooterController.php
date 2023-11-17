@@ -14,7 +14,7 @@ class FooterController extends AbstractController
     public function hours(CompanyRepository $companyRepository, OpeningRepository $openingRepository): Response
     {
         $companies = $companyRepository->findAll();
-        $openings = $openingRepository->findAll();
+        $openings = $openingRepository->findBy([], ['dayOrder'=> 'ASC']);
         
         return $this->render('_partials/_hours.html.twig', [
             'companies' => $companies,
@@ -26,7 +26,7 @@ class FooterController extends AbstractController
     public function contactDetails(CompanyRepository $companyRepository, OpeningRepository $openingRepository): Response
     {
         $companies = $companyRepository->findAll();
-        $openings = $openingRepository->findAll();
+        $openings = $openingRepository->findBy([], ['dayOrder' => 'ASC']);
 
         return $this->render('_partials/_contactDetails.html.twig', [
             'companies' => $companies,
