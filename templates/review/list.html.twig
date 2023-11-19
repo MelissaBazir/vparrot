@@ -6,10 +6,10 @@
     <div class="container">
         <h1>Ne nous croyez pas sur parole, <br> Fiez-vous à nos clients</h1>
         <a href="{{ path('app_review_new') }}" class="btn btn-outline-secondary px-4 me-md-2 my-3">Partager mon avis</a>
-        <div class="grid mb-4">
+        <div class="row g-4 mb-4 d-flex justify-content-around">
 
         {% for review in reviews %}
-            <div class="card" style="width: 18rem;">
+            <div class="card col-4 " style="width: 18rem;">
                 <i class="fa-solid fa-quote-left fa-2xl" style="color: #d9777f;"></i>
                 <div class="card-body d-flex flex-column align-items-center">
                     <h5 class="card-title">{{review.title|title}}</h5>
