@@ -19,14 +19,19 @@ body {
 }
 
 // No UI Slider styling
-.noUi-connect {
+.slider-styled{
+    height: 10px;
+}
+
+.slider-styled .noUi-connect {
     background: #d92332;
 }
-.noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
-	background: #d92332;
-}
-.noUi-target.noUi-horizontal .noUi-tooltip {
-	background-color: #d92332;
+.slider-styled .noUi-handle{
+    height: 18px;
+    width: 18px;
+    top: -5px;
+    right: -9px; /* half the width */
+    border-radius: 9px;
 }
 
 .btn {
