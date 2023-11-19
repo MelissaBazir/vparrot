@@ -7,9 +7,6 @@ use App\Entity\Car;
 use App\Form\CarType;
 use App\Form\SearchForm;
 use App\Repository\CarRepository;
-use App\Repository\CompanyRepository;
-use App\Repository\ImageRepository;
-use App\Repository\OpeningRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,7 +46,7 @@ class CarController extends AbstractController
         $cars = $paginator->paginate(
             $carRepository->findAll(),
             $request->query->getInt('page', 1),
-            9
+            8,
         );
         return $this->render('car/index.html.twig', [
             'cars' => $cars,

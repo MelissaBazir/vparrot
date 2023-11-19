@@ -1,64 +1,61 @@
-{% extends "base.html.twig" %}
+{# {% extends "base.html.twig" %}
 
 {% block title %}Garage V. PARROT - Administration{% endblock %}
 
-{% block body %}
-    <div class="container">
+{% block body %} #}
+    <div class="col-3 col-sm">
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">Garage V. Parrot <br> Administration</span>
+        <span class="fs-4 hidden">Tableau de bord</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-        <a href="{{ path('app_profile') }}" class="nav-link active" aria-current="page">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-            Accueil
-        </a>
         </li>
         <li>
         <a href="{{ path('admin_user_index') }}" class="nav-link link-body-emphasis">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-            Employés
+            <i class="fa-regular fa-user me-2" style="color: #d92332;"></i>
+            <span class="hidden">Employés</span>
         </a>
         </li>
         <li>
         <a href="{{ path('app_company_index') }}" class="nav-link link-body-emphasis">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-            Sociétés
+            <i class="fa-regular fa-building me-2" style="color: #d92332;"></i>
+            <span class="hidden">Sociétés</span>
         </a>
         </li>
         <li>
         <a href="{{ path('app_opening_index') }}" class="nav-link link-body-emphasis">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-            Horaires
+            <i class="fa-regular fa-clock me-2" style="color: #d92332;"></i>
+            <span class="hidden">Horaires</span>
         </a>
         </li>
         <li>
         <a href="{{ path('app_service_index') }}" class="nav-link link-body-emphasis">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-            Services
+            <i class="fa-solid fa-screwdriver-wrench me-2" style="color: #d92332;"></i>
+            <span class="hidden">Services</span>
         </a>
         </li>
     <hr>
     <li>
         <a href="{{ path('app_review_index') }}" class="nav-link link-body-emphasis">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-            Avis
+            <i class="fa-regular fa-star me-2" style="color: #d92332;"></i>
+            <span class="hidden">Avis</span>
         </a>
         </li>
         <li>
         <a href="{{ path('app_car_index') }}" class="nav-link link-body-emphasis">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-            Annonces
+            <i class="fa-solid fa-car me-2" style="color: #d92332;"></i>
+            <span class="hidden">Annonces</span>
         </a>
         </li>
     </ul>
     <hr>
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <strong>Administrateur</strong>
+        <i class="fa-solid fa-right-from-bracket" style="color: #d92332;"></i>
+        {# <strong>Administrateur</strong> #}
         </a>
         <ul class="dropdown-menu text-small shadow">
         <li><a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a></li>
@@ -67,7 +64,7 @@
     </div>
 </div>
 
-{% endblock %}
+{# {% endblock %} #}
 
 
 

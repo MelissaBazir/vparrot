@@ -3,26 +3,24 @@
 {% block title %}Car index{% endblock %}
 
 {% block body %}
-    <main class="container">
-        <section class="row">
-            <div class="col-12">
-                <h1>Découvrez nos occasions - Arrivages tous les jours</h1>
-            </div>
-            <div class="container js-filter">
-                <div class="row">
-                    <div class="col-md-3 pt-4">
-                        {% include 'car/_filter.html.twig' with {form: form} only %}
+    <div class="container">
+            <h1>Découvrez nos occasions - Arrivages tous les jours</h1>
+        <section class="d-flex justify-content-center">
+            
+            
+            <div class="js-filter">
+                <div class="col-md-3 pt-4">
+                    {% include 'car/_filter.html.twig' with {form: form} only %}
+                </div>
+                <div class="">
+                    <div class="row d-flex justify-content-around g-4 mb-4 js-filter-content pt-2">
+                        {% include 'car/_cars.html.twig' %}
                     </div>
-                    <div class="col-md-9">
-                        <div class="grid js-filter-content pt-2">
-                            {% include 'car/_cars.html.twig' %}
-                        </div>
-                        <div class="mt-4 js-filter-pagination ">
-                            {{ knp_pagination_render(cars) }}
-                        </div>
+                    <div class="mt-4 js-filter-pagination d-flex justify-content-center ">
+                        {{ knp_pagination_render(cars) }}
                     </div>
                 </div>
             </div>
         </section>
-    </main>
+    </div>
 {% endblock %}
