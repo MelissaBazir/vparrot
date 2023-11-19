@@ -11,12 +11,18 @@
         {{ form_errors(form) }}
 
         {{ form_start(form) }}
-                {{ include('review/_form.html.twig', {'button_label': 'Créer l\'avis'}) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.textReview) }}
+            {{ form_row(form.score) }}
+            {{ form_row(form.email) }}
+            
+                {# {{ include('review/_form.html.twig', {'button_label': 'Créer l\'avis'}) }} #}
                 {% if app.user %}
+                {{ form_row(form.isApproved) }}
                 <a href="{{ path('app_review_index') }}" class="btn btn-dark mb-3">Retour à la liste</a>     
                 {% endif %}
-                
-        {{ form_end(form) }}
+                <button type="submit" class="btn btn-primary mb-3">Créer l'avis</button>
+        {{ form_end(form, {'render_rest': false}) }}
     </div>
 </div>
 {% endblock %}

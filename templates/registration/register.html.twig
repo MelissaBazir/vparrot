@@ -6,7 +6,7 @@
 <section class="container d-flex justify-content-center">
     <div class="row">
         <div class="col-8">
-            <h1>Nouvel employé</h1>
+            <h1>Créer un employé</h1>
 
             {{ form_errors(registrationForm) }}
 
@@ -30,8 +30,8 @@
                 
                 {{ form_row(registrationForm.RGPDConsent) }}
 
-                <button type="submit" class="btn btn-dark btn-lg my-3">Créer l'employé</button>
-                <a href="{{ path('admin_user_index') }}" class="btn btn-dark btn-lg my-3">Retour à la liste</a>
+                <button type="submit" class="btn btn-primary my-3">Créer l'employé</button>
+                <a href="{{ path('admin_user_index') }}" class="btn btn-dark my-3">Retour à la liste</a>
             {{ form_end(registrationForm) }}
         </div>
     </div>
