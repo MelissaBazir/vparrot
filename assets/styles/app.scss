@@ -18,8 +18,15 @@ body {
     background-color: #F2F2F2;
 }
 
-.noUi-connect, .progress-bar {
-    background: #d9777f;
+// No UI Slider styling
+.noUi-connect {
+    background: #d92332;
+}
+.noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
+	background: #d92332;
+}
+.noUi-target.noUi-horizontal .noUi-tooltip {
+	background-color: #d92332;
 }
 
 .btn {

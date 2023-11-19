@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ContactController extends AbstractController
 {
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/contact", name="contact_index")
      */
     #[Route(path:"/contact", name:"contact_index")]
     public function index(Request $request, MailerInterface $mailer): Response

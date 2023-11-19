@@ -24,7 +24,7 @@ class CarController extends AbstractController
 {
     // Cars displayed in cards for customer
     #[Route('/occasions', name: 'occasions_list', methods: ['GET'])]
-    public function list(CarRepository $carRepository, Request $request, ImageRepository $imageRepository): Response
+    public function list(CarRepository $carRepository, Request $request): Response
     {
         $data = new SearchData();
         $data->page = $request->get('page', 1);
@@ -39,7 +39,6 @@ class CarController extends AbstractController
         }
         return $this->render('car/list.html.twig', [
             'cars' => $cars,
-            'images' => $imageRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
@@ -92,14 +91,11 @@ class CarController extends AbstractController
 
     // Details of a card for customer
     #[Route('/occasions/{slug}', name: 'occasions_details', methods: ['GET'])]
-    public function details(Car $car, ImageRepository $imageRepository, OpeningRepository $openingRepository, CompanyRepository $companyRepository): Response
+    public function details(Car $car): Response
     {
         
         return $this->render('car/details.html.twig', [
             'car' => $car,
-            'images' => $imageRepository->find($car->getId()),
-            'openings' => $openingRepository->findAll(),
-            'companies' => $companyRepository->findAll(),
         ]);
     }
 

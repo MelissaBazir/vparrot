@@ -3,11 +3,11 @@
 {% block body %}
     <div class="container d-flex justify-content-center">
     <h1 class="my-6">Nous contacter</h1>
-        {% for message in app.flashes('success') %}
+        {# {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
                 {{message}}
             </div>
-        {% endfor %}
+        {% endfor %} #}
     </div>
     {{ form_start(form) }}
         <div class="container d-flex justify-content-center">
