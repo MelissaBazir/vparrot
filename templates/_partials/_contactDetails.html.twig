@@ -1,7 +1,7 @@
 <ul class="nav flex-column">
     {% for company in companies %}
         <li class="nav-item mb-2">Garage {{company.name}}</li>
-        <a href="{{ path('contact_index') }}"><li class="nav-item mb-2">{{company.email}}</li></a>
+        <a href="{{ path('contact_index') }}" class="link-primary"><li class="nav-item mb-2">{{company.email}}</li></a>
         <li class="nav-item mb-2">{{company.telephone}}</li>
         <li class="nav-item mb-2">{{company.address}}</li>
         <li class="nav-item mb-2">{{company.zipcode}} {{company.city}}</li>
