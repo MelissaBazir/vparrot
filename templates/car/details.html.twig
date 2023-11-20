@@ -3,46 +3,27 @@
 {% block title %}Garage V. PARROT - {{car.title}} {% endblock %}
 
 {% block body %}
-    <h1>Détails de l'annonce {{car.title}} </h1>
+    <h1 class="mb-4">{{car.title|title}} </h1>
+    <a href="{{ path('occasions_list') }}" class="btn btn-outline-secondary mb-3">Retour à la liste</a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ car.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ car.title }}</td>
-            </tr>
-            <tr>
-                <th>Year</th>
-                <td>{{ car.year }}</td>
-            </tr>
-            <tr>
-                <th>Mileage</th>
-                <td>{{ car.mileage }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ car.price }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td><img src="{{ car.image }}" alt="not working"></td>
-            </tr>
-            <tr>
-                <th>Mise en ligne le</th>
-                <td>{{ car.createdAt ? car.createdAt|date('d/m/Y') : '' }}</td>
-            </tr>
-            
-        </tbody>
-    </table>
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
 
-    <a href="{{ path('occasions_list') }}">Retour à la liste</a>
-
-    {# Renvoyer vers contact form et ajout auto du titre #}
-    <a href="{{ path('contact_index') }}">En savoir plus</a>
+    {# <div class="row flex-lg-row align-items-center g-5 my-5"> #}
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ car.image }}" alt="photo voiture">
+        </div>
+        <div class="col-lg-6">
+        <div class="card my-5" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{ car.price | number_format(0, ',', ' ') }} €</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{ car.mileage | number_format(0, ',', ' ') }} km</h6>
+            <p class="card-text">Année de mise en circulation : {{ car.year }}</p>
+            <p class="card-text">Annonce mise en ligne le : {{ car.createdAt ? car.createdAt|date('d/m/Y') : '' }}</p>
+            <a href="{{ path('contact_index') }}" class="btn btn-primary">En savoir plus</a>
+        </div>
+    </div>
+        </div>
+    </div>
 
     
 {% endblock %}

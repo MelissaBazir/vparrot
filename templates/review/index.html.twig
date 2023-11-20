@@ -15,10 +15,8 @@
             <thead>
                 <tr>
                     <th>Titre</th>
-                    <th>Texte de l'avis</th>
                     <th>Note attribuée</th>
                     <th>Approuvé</th>
-                    <th>E-mail de l'auteur</th>
                     <th>Date de création</th>
                     <th>Action</th>
                 </tr>
@@ -27,10 +25,8 @@
         {% for review in reviews %}
                 <tr>
                     <td>{{ review.title|title }}</td>
-                    <td>{{ review.textReview }}</td>
                     <td>{{ review.score }}</td>
                     <td>{{ review.isApproved ? 'Oui' : 'Non' }}</td>
-                    <td>{{ review.email }}</td>
                     <td>{{ review.createdAt ? review.createdAt|date('d/m/Y') : '' }}</td>
                 
                     <td>

@@ -11,12 +11,13 @@ $bs-nav-link-color: var($primary);
 $bs-link-color: var($primary);
 $bs-link-hover-color: var($secondary);
 
+$body-bg: $light;
+$font-family-base: "barlow", sans-serif;
+
+$headings-font-family: "rajdhani", sans-serif;
 
 
 
-body {
-    background-color: #F2F2F2;
-}
 
 // No UI Slider styling
 .slider-styled{
