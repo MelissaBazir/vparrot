@@ -6,6 +6,8 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column m-auto">
+        {% if app.user.roles == ["ROLE_ADMIN","ROLE_USER"] %}
+        
         <li class="nav-item">
         <a href="{{ path('admin_user_index') }}" class="nav-link link-body-emphasis">
             <i class="fa-regular fa-user me-2" style="color: #d92332;"></i>
@@ -30,7 +32,8 @@
             <span class="hidden">Services</span>
         </a>
         </li>
-    <hr>
+        <hr>
+        {% endif %}
     <li>
         <a href="{{ path('app_review_index') }}" class="nav-link link-body-emphasis">
             <i class="fa-regular fa-star me-2" style="color: #d92332;"></i>

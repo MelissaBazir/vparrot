@@ -12,7 +12,7 @@ class ProfileController extends AbstractController
     public function index(): Response
     {
         if ($this->getUser()->getRoles() === ['ROLE_ADMIN', 'ROLE_USER']) {
-            return $this->render('profile/profile/admin.html.twig', [
+            return $this->render('profile/profile/user.html.twig', [
                 'controller_name' => 'ProfileController',
             ]);
         }

@@ -21,7 +21,7 @@
       
         {# if i'm connected only #}
         {% if app.user %}
-          <li class="nav-item"><a href="{{ path('admin_user_index') }}" class="nav-link link-primary">Gestion du site</a></li>
+          <li class="nav-item"><a href="{{ path('app_review_index') }}" class="nav-link link-primary">Gestion du site</a></li>
           <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link link-primary">Me déconnecter</a></li>
         {% else %}
         <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link">Espace sécurisé</a></li>

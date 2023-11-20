@@ -73,7 +73,7 @@ class ReviewType extends AbstractType
                     'minlength' => '2',
                     'maxlength' => '255',
                 ],
-                'label' => 'E-mail',
+                'label' => 'E-mail de l\'auteur',
                 'label_attr' => [
                     'class' => 'form-label mb-3',
                 ],

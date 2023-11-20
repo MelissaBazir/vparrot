@@ -1,22 +1,57 @@
-<div class="col-md-2 col-sm">
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage V. PARROT - Gestion du site{% endblock %}
+
+{% block body %}
+<div class="container d-flex">
+<div class="col-md-2 col">
+    <div class="d-flex flex-column flex-shrink-0 p-1 border rounded" style="width: 9em;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <span class="fs-4 hidden">Tableau <br> de bord</span>
     </a>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <ul class="nav nav-pills flex-column m-auto">
+        {% if app.user.roles == ["ROLE_ADMIN","ROLE_USER"] %}
+        
+        <li class="nav-item">
+        <a href="{{ path('admin_user_index') }}" class="nav-link link-body-emphasis">
+            <i class="fa-regular fa-user me-2" style="color: #d92332;"></i>
+            <span class="hidden">Employés</span>
+        </a>
+        </li>
         <li>
+        <a href="{{ path('app_company_index') }}" class="nav-link link-body-emphasis">
+            <i class="fa-regular fa-building me-2" style="color: #d92332;"></i>
+            <span class="hidden">Sociétés</span>
+        </a>
+        </li>
+        <li>
+        <a href="{{ path('app_opening_index') }}" class="nav-link link-body-emphasis">
+            <i class="fa-regular fa-clock me-2" style="color: #d92332;"></i>
+            <span class="hidden">Horaires</span>
+        </a>
+        </li>
+        <li>
+        <a href="{{ path('app_service_index') }}" class="nav-link link-body-emphasis">
+            <i class="fa-solid fa-screwdriver-wrench me-2" style="color: #d92332;"></i>
+            <span class="hidden">Services</span>
+        </a>
+        </li>
+        <hr>
+        {% endif %}
+    <li>
         <a href="{{ path('app_review_index') }}" class="nav-link link-body-emphasis">
             <i class="fa-regular fa-star me-2" style="color: #d92332;"></i>
-            Avis
+            <span class="hidden">Avis</span>
         </a>
         </li>
         <li>
         <a href="{{ path('app_car_index') }}" class="nav-link link-body-emphasis">
             <i class="fa-solid fa-car me-2" style="color: #d92332;"></i>
-            Annonces
+            <span class="hidden">Annonces</span>
         </a>
         </li>
+    </ul>
     <hr>
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,3 +63,7 @@
     </div>
     </div>
 </div>
+<h1 class="col-md-8 m-auto">Bienvenue sur la gestion du site</h1>
+</div>
+
+{% endblock %}
