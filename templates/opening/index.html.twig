@@ -3,50 +3,53 @@
 {% block title %}Garage V. PARROT - Horaires{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>Gestion des horaires d'ouverture</h1>
+<div class="container d-flex">
+{% include "profile/profile/admin.html.twig" %}
+    <div class="col-8">
+        <h1 class="mb-4">Gestion des horaires d'ouverture</h1>
 
-    <a href="{{ path('app_opening_new') }}" class="btn btn-outline-secondary">Ajouter un nouvel horaire</a>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Jour de la semaine</th>
-                <th>Ouverture - Matin</th>
-                <th>Fermeture - Matin</th>
-                <th>Ouverture - Après-midi</th>
-                <th>Fermeture - Après-midi</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for opening in openings %}
-            <tr>
-                <td>{{ opening.day }}</td>
+        <a href="{{ path('app_opening_new') }}" class="btn btn-outline-secondary">Ajouter un nouvel horaire</a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Jour de la semaine</th>
+                    <th>Ouverture - Matin</th>
+                    <th>Fermeture - Matin</th>
+                    <th>Ouverture - Après-midi</th>
+                    <th>Fermeture - Après-midi</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for opening in openings %}
+                <tr>
+                    <td>{{ opening.day }}</td>
 
-                <td>{% if opening.amOpening == 'Fermé' %}Fermé {% else %} {{opening.amOpening}}
-                    {% endif %}
-                </td>
-                <td>{% if opening.amClosing == 'Fermé' %}Fermé {% else %} {{opening.amClosing}}
-                    {% endif %}
-                </td>
-                <td>{% if opening.pmOpening == 'Fermé' %}Fermé {% else %} {{opening.pmOpening}}
-                    {% endif %}
-                </td>
-                <td>{% if opening.pmClosing == 'Fermé' %}Fermé {% else %} {{opening.pmClosing}}
-                    {% endif %}
-                </td>
+                    <td>{% if opening.amOpening == 'Fermé' %}Fermé {% else %} {{opening.amOpening}}
+                        {% endif %}
+                    </td>
+                    <td>{% if opening.amClosing == 'Fermé' %}Fermé {% else %} {{opening.amClosing}}
+                        {% endif %}
+                    </td>
+                    <td>{% if opening.pmOpening == 'Fermé' %}Fermé {% else %} {{opening.pmOpening}}
+                        {% endif %}
+                    </td>
+                    <td>{% if opening.pmClosing == 'Fermé' %}Fermé {% else %} {{opening.pmClosing}}
+                        {% endif %}
+                    </td>
 
                 
-                <td>
-                    <a href="{{ path('app_opening_edit', {'id': opening.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">Il n'y a aucun horaire défini actuellement</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    <td>
+                        <a href="{{ path('app_opening_edit', {'id': opening.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">Il n'y a aucun horaire défini actuellement</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

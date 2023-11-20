@@ -1,19 +1,12 @@
-{# {% extends "base.html.twig" %}
 
-{% block title %}Garage V. PARROT - Administration{% endblock %}
-
-{% block body %} #}
-    <div class="col-3 col-sm">
+<div class="col-md-2 col-sm">
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4 hidden">Tableau de bord</span>
+        <span class="fs-4 hidden">Tableau <br> de bord</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-        </li>
-        <li>
         <a href="{{ path('admin_user_index') }}" class="nav-link link-body-emphasis">
             <i class="fa-regular fa-user me-2" style="color: #d92332;"></i>
             <span class="hidden">Employés</span>
@@ -55,7 +48,6 @@
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa-solid fa-right-from-bracket" style="color: #d92332;"></i>
-        {# <strong>Administrateur</strong> #}
         </a>
         <ul class="dropdown-menu text-small shadow">
         <li><a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a></li>
@@ -64,7 +56,6 @@
     </div>
 </div>
 
-{# {% endblock %} #}
 
 
 
