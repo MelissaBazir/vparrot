@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage V. PARROT - {{car.title}} {% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">{{car.title|title}} </h1>
+    <a href="{{ path('occasions_list') }}" class="btn btn-outline-secondary m-3">Retour à la liste</a>
+
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+
+    <div class="row flex-lg-row align-items-center g-5 my-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ asset('images/uploads/' ~ car.image) }}" class="d-block w-100" alt="photo voiture">
+        </div>
+        <div class="col-lg-6">
+        <div class="card my-5 text-center" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{ car.price | number_format(0, ',', ' ') }} €</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{ car.mileage | number_format(0, ',', ' ') }} km</h6>
+            <p class="card-text">Année de mise en circulation : {{ car.year }}</p>
+            <p class="card-text">Annonce mise en ligne le : {{ car.createdAt ? car.createdAt|date('d/m/Y') : '' }}</p>
+            <a href="{{ path('contact_index') }}" class="btn btn-primary">En savoir plus</a>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    
+{% endblock %}

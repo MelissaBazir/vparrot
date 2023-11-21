@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage V. PARROT - Sociétés{% endblock %}
+
+{% block body %}
+<div class="container d-flex">
+{% include "profile/profile/admin.html.twig" %}
+    <div class="col-8">
+    <h1>Gestion des coordonnées de sociétés</h1>
+
+    <a href="{{ path('app_company_new') }}" class="btn btn-outline-secondary">Ajouter une nouvelle société</a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>E-mail</th>
+                <th>Téléphone</th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.email }}</td>
+                <td>{{ company.telephone }}</td>
+                <td>{{ company.address }}</td>
+                <td>{{ company.zipcode }}</td>
+                <td>{{ company.city }}</td>
+                <td>
+                    <a href="{{ path('app_company_edit', {'id': company.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Il n'y a aucune société actuellement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation d-flex justify-content-center">
+    {{ knp_pagination_render(companies) }}
+    </div>
+    </div>
+</div>
+{% endblock %}

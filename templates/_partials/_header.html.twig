@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg" >
+  <div class="container-fluid d-flex align-items-start">
+    <a class="navbar-brand" href="{{ path('main') }}">
+      <img src="{{ asset('images/logo_garage.png') }}" alt="logo garage">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link link-primary active" href="{{ path('main') }}">Accueil
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item"><a href="{{ path('occasions_list') }}" class="nav-link link-primary">Nos véhicules d'occasion</a></li>
+        <li class="nav-item"><a href="{{ path('app_review_list') }}" class="nav-link link-primary">Avis</a></li>
+        <li class="nav-item"><a href="{{ path('contact_index') }}" class="nav-link link-primary">Contact</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      
+        {# if i'm connected only #}
+        {% if app.user %}
+          <li class="nav-item"><a href="{{ path('app_review_index') }}" class="nav-link link-primary">Gestion du site</a></li>
+          <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link link-primary">Me déconnecter</a></li>
+        {% else %}
+        <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link">Espace sécurisé</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

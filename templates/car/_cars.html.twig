@@ -1,0 +1,5 @@
+{% for car in cars %}
+    {% include 'car/_card.html.twig' with {car: car} only %}
+{% else %}
+    <p>Aucune annonce ne correspond à vos critères</p>
+{% endfor %}

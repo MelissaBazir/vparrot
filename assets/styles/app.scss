@@ -1,0 +1,57 @@
+// custom variables
+$primary: #d92332;
+$secondary: #d9777f;
+$success: #28a745;
+$danger: #dc3545;
+$warning: #fd7e14;
+$info: #17a2b8;
+$light: #f2f2f2;
+$dark: #262526;
+$bs-nav-link-color: var($primary);
+$bs-link-color: var($primary);
+$bs-link-hover-color: var($secondary);
+
+$body-bg: $light;
+$font-family-base: "barlow", sans-serif;
+
+$headings-font-family: "rajdhani", sans-serif;
+
+
+
+
+// No UI Slider styling
+.slider-styled{
+    height: 10px;
+}
+
+.slider-styled .noUi-connect {
+    background: #d92332;
+}
+.slider-styled .noUi-handle{
+    height: 18px;
+    width: 18px;
+    top: -5px;
+    right: -9px; /* half the width */
+    border-radius: 9px;
+}
+
+.btn {
+    background-color: $dark;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+
+@import '~bootstrap/scss/bootstrap';
+// @import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+// Default variable overrides
+$body-bg: #F2F2F2;
+$body-color: #262526;
+
+
+
+

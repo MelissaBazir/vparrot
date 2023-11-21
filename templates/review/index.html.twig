@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage V. PARROT - Gestion Avis{% endblock %}
+
+{% block body %}
+<div class="container d-flex">
+{% if app.user %}{% endif %}
+
+{% include "profile/profile/admin.html.twig" %} 
+    <div class="col-8">
+        <h1 class="mb-4">Liste des {{ reviews.getTotalItemCount }} avis</h1>
+
+        <a href="{{ path('app_review_new') }}" class="btn btn-outline-secondary">Ajouter un nouvel avis</a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Note attribuée</th>
+                    <th>Approuvé</th>
+                    <th>Date de création</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+        {% for review in reviews %}
+                <tr>
+                    <td>{{ review.title|title }}</td>
+                    <td>{{ review.score }}</td>
+                    <td>{{ review.isApproved ? 'Oui' : 'Non' }}</td>
+                    <td>{{ review.createdAt ? review.createdAt|date('d/m/Y') : '' }}</td>
+                
+                    <td>
+                        <a href="{{ path('app_review_edit', {'id': review.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Il n'y a aucun avis actuellement</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="navigation d-flex justify-content-center">
+            {{ knp_pagination_render(reviews) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<div class='container-fluid'>
+    <footer class="border-top shadow-top pt-5">
+    <div class="d-flex justify-content-between">
+      <div class="col-6 col-md-3 mb-3 ps-1">
+        <h5 class="fw-bold text-primary">Nos coordonnées</h5>
+        {{ render(controller('App\\Controller\\FooterController::contactDetails')) }}
+        <a class="link-primary" href="https://maps.app.goo.gl/L3iVpTjkumoR2JSu8" target="blank">Venir nous voir</a>
+      </div>
+      <div class="col-6 col-md-3 mb-3">  
+        <h5 class="fw-bold text-primary">Nos horaires d'ouverture</h5>
+        {{ render(controller('App\\Controller\\FooterController::hours')) }}  
+      </div>
+    </div>
+
+      
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 mt-4">
+      <p>© 2023 Garage V. Parrot, SAS Tous droits réservés.</p>
+    </div>
+  </footer>
+</div>

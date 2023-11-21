@@ -1,0 +1,17 @@
+
+<ul class="nav flex-column">
+    {% for opening in openings %}
+        {% if opening.amOpening == 'Fermé' or opening.amClosing == 'Fermé' and opening.pmOpening == 'Fermé' or opening.pmClosing == 'Fermé'  %}
+            <li class="nav-item mb-2">{{opening.day|title}} : Fermé</li>
+        {% elseif opening.pmOpening == 'Fermé' or opening.pmClosing == 'Fermé' %}
+            <li class="nav-item mb-2">{{opening.day|title}} : {{opening.amOpening}} -  {{opening.amClosing}} / Fermé</li>
+        {% elseif opening.amOpening == 'Fermé' or opening.amClosing == 'Fermé' %}
+            <li class="nav-item mb-2">{{opening.day|title}} : Fermé / {{opening.pmOpening}} -  {{opening.pmClosing}}</li>
+        {% else %}
+            <li class="nav-item mb-2">{{opening.day|title}} : {{opening.amOpening}} -  {{opening.amClosing}} / {{opening.pmOpening}} -  {{opening.pmClosing}}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+
+

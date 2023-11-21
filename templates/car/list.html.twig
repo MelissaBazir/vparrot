@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car index{% endblock %}
+
+{% block body %}
+    <div class="container">
+            <h1>Découvrez nos occasions - Arrivages tous les jours</h1>
+        <section class="d-flex justify-content-center">
+            
+            
+            <div class="js-filter d-md-flex d-lg-flex">
+                <div class="col-md-3 pt-4">
+                    {% include 'car/_filter.html.twig' with {form: form} only %}
+                </div>
+                <div class="">
+                    <div class="row d-flex justify-content-around g-4 mb-4 js-filter-content pt-2">
+                        {% include 'car/_cars.html.twig' %}
+                    </div>
+                    <div class="mt-4 js-filter-pagination d-flex justify-content-center ">
+                        {{ knp_pagination_render(cars) }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
