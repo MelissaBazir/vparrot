@@ -41,7 +41,7 @@ class __TwigTemplate_fb6eaf8332edf59bba9fbc7a4d4b7d4b extends Template
 
         // line 1
         echo "<nav class=\"navbar navbar-expand-lg\" >
-  <div class=\"container-fluid d-flex align-items-start\">
+  <div class=\"container-fluid d-flex align-items-center\">
     <a class=\"navbar-brand\" href=\"";
         // line 3
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("main");
@@ -49,7 +49,7 @@ class __TwigTemplate_fb6eaf8332edf59bba9fbc7a4d4b7d4b extends Template
       <img src=\"";
         // line 4
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo_garage.png"), "html", null, true);
-        echo "\" alt=\"logo garage\">
+        echo "\" class= \"col-md-5 img-fluid\" alt=\"logo garage\">
     </a>
     <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarColor01\" aria-controls=\"navbarColor01\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
       <span class=\"navbar-toggler-icon\"></span>
@@ -130,9 +130,9 @@ class __TwigTemplate_fb6eaf8332edf59bba9fbc7a4d4b7d4b extends Template
     public function getSourceContext()
     {
         return new Source("<nav class=\"navbar navbar-expand-lg\" >
-  <div class=\"container-fluid d-flex align-items-start\">
+  <div class=\"container-fluid d-flex align-items-center\">
     <a class=\"navbar-brand\" href=\"{{ path('main') }}\">
-      <img src=\"{{ asset('images/logo_garage.png') }}\" alt=\"logo garage\">
+      <img src=\"{{ asset('images/logo_garage.png') }}\" class= \"col-md-5 img-fluid\" alt=\"logo garage\">
     </a>
     <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarColor01\" aria-controls=\"navbarColor01\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
       <span class=\"navbar-toggler-icon\"></span>

@@ -7,8 +7,8 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 
-import './styles/app.scss';
-require('bootstrap');
+import './styles/app.scss'
+require('bootstrap')
 require('@fortawesome/fontawesome-free/css/all.min.css')
 require('@fortawesome/fontawesome-free/js/all.js')
 
@@ -16,26 +16,29 @@ import * as noUiSlider from 'nouislider'
 import 'nouislider/dist/nouislider.css'
 import Filter from './modules/Filter'
 
-
 new Filter(document.querySelector('.js-filter'))
-
-
 
 const sliderPrice = document.getElementById('price-slider')
 
 if (sliderPrice) {
     const minPrice = document.getElementById('minPrice')
     const maxPrice = document.getElementById('maxPrice')
+    const minPriceValue =
+        Math.floor(parseInt(sliderPrice.dataset.minPrice, 10) / 1000) * 1000
+    const maxPriceValue =
+        Math.ceil(parseInt(sliderPrice.dataset.maxPrice, 10) / 1000) * 1000
     const rangePrice = noUiSlider.create(sliderPrice, {
-        start: [minPrice.value || 0, maxPrice.value || 100000],
+        start: [
+            minPrice.value || minPriceValue,
+            maxPrice.value || maxPriceValue,
+        ],
         connect: true,
-        step: 1000,
+        step: 100,
         range: {
-            min: 0,
-            max: 100000,
+            min: minPriceValue,
+            max: maxPriceValue,
         },
     })
-    
 
     rangePrice.on('slide', function (values, handle) {
         console.log(values, handle)
@@ -65,8 +68,6 @@ if (sliderYear) {
             max: 2024,
         },
     })
-    
-    
 
     rangeYear.on('slide', function (values, handle) {
         console.log(values, handle)
@@ -96,7 +97,6 @@ if (sliderMileage) {
             max: 1000000,
         },
     })
-    
 
     rangeMileage.on('slide', function (values, handle) {
         if (handle === 0) {
@@ -109,7 +109,6 @@ if (sliderMileage) {
     rangeMileage.on('end', function (values, handle) {
         minMileage.dispatchEvent(new Event('change'))
     })
-
 }
 
 // function slide(element) {
@@ -126,4 +125,3 @@ if (sliderMileage) {
 //         })
 //     }
 // }
-

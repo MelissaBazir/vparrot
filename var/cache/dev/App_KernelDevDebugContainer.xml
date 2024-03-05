@@ -372,18 +372,6 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
-    <service id="App\Command\AppCreateAdminCommand" class="App\Command\AppCreateAdminCommand" autowire="true" autoconfigure="true">
-      <tag name="console.command"/>
-      <tag name="container.no_preload"/>
-      <argument type="service" id="security.user_password_hasher"/>
-      <argument type="service" id="App\Repository\UserRepository"/>
-      <call method="setName">
-        <argument>app.create-admin</argument>
-      </call>
-      <call method="setDescription">
-        <argument>Creates an admin and stores it in database</argument>
-      </call>
-    </service>
     <service id="App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" public="true" autowire="true" autoconfigure="true">
       <tag name="ea.dashboard_controller"/>
       <tag name="controller.service_arguments"/>
@@ -7662,8 +7650,6 @@
       <tag name="twig.runtime"/>
       <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
-    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\AppCreateAdminCommand" class="App\Command\AppCreateAdminCommand" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Command\AppCreateAdminCommand" class="App\Command\AppCreateAdminCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
     <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\DashboardControllerInterface.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
@@ -9894,13 +9880,6 @@
     <service id=".errored..service_locator.0_8rZbK.App\Entity\Service" class="App\Entity\Service">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.0_8rZbK&quot;: it needs an instance of &quot;App\Entity\Service&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
-    <service id=".App\Command\AppCreateAdminCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
-      <argument>app.create-admin</argument>
-      <argument type="collection"/>
-      <argument>Creates an admin and stores it in database</argument>
-      <argument>false</argument>
-      <argument type="service_closure" id="App\Command\AppCreateAdminCommand"/>
-    </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -10424,9 +10403,8 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.nZl2KAO"/>
+      <argument type="service" id=".service_locator._4zJbBW"/>
       <argument type="collection">
-        <argument key="app.create-admin">App\Command\AppCreateAdminCommand</argument>
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
         <argument key="cache:clear">console.command.cache_clear</argument>
@@ -10538,10 +10516,9 @@
         <argument key="make:security:form-login">maker.auto_command.make_security_form_login</argument>
       </argument>
     </service>
-    <service id=".service_locator.nZl2KAO" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator._4zJbBW" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Command\AppCreateAdminCommand" type="service_closure" id=".App\Command\AppCreateAdminCommand.lazy"/>
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
         <argument key="console.command.assets_install" type="service_closure" id=".console.command.assets_install.lazy"/>
         <argument key="console.command.cache_clear" type="service_closure" id=".console.command.cache_clear.lazy"/>

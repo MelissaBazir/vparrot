@@ -86,23 +86,23 @@ class __TwigTemplate_d1d051a777c35820ac1765c039ee0165 extends Template
 
         // line 6
         echo "    <div class=\"container col-xxl-8 px-4 py-5\">
-    <div class=\"row flex-lg-row-reverse align-items-center g-5 py-5\">
-        <div class=\"col-10 col-sm-8 col-lg-6\">
+    <div class=\"row flex-lg-row-reverse align-items-center g-5 py-5 h-100\">
+        <div class=\"col-10 col-sm-8 col-lg-4 mt-0\">
             <img src=\"";
         // line 9
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/photo_mécanicien.jpg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"photo mécanicien\">
+        echo "\" class=\"d-block w-75\" alt=\"photo mécanicien\">
         </div>
-        <div class=\"col-lg-6\">
-            <h1 class=\"display-5 fw-bold text-body-emphasis lh-1 mb-3\">Bienvenue au Garage V. Parrot</h1>
-            <p class=\"lead\">Installé à Toulouse depuis 2021, notre garage est à votre service dans nos nombreux domaines d'expertise</p>
+        <div class=\"col-lg-8 mt-0\">
+            <h1 class=\" fw-bold text-body-emphasis h-1 mb-3\">Bienvenue au Garage V. Parrot</h1>
+            <p class=\"\">Installé à Toulouse depuis 2021, notre garage est à votre service dans nos nombreux domaines d'expertise</p>
             <div class=\"d-grid gap-2 d-md-flex justify-content-md-start\">
                 <a href=\"";
         // line 15
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("occasions_list");
-        echo "\" class=\"btn btn-outline-primary btn-lg px-4 me-md-2\">Voir nos véhicules d'occasion</a>
+        echo "\" class=\"btn btn-outline-primary btn px-4 me-md-2\">Voir nos véhicules d'occasion</a>
             </div>
-            <h4 class=\"mt-5\">Toute une gamme de services professionnels</h4>
+            <h4 class=\"mt-4\">Toute une gamme de services professionnels</h4>
             <ul>
             ";
         // line 19
@@ -159,17 +159,17 @@ class __TwigTemplate_d1d051a777c35820ac1765c039ee0165 extends Template
 
 {% block body %}
     <div class=\"container col-xxl-8 px-4 py-5\">
-    <div class=\"row flex-lg-row-reverse align-items-center g-5 py-5\">
-        <div class=\"col-10 col-sm-8 col-lg-6\">
-            <img src=\"{{ asset('images/photo_mécanicien.jpg') }}\" class=\"d-block w-100\" alt=\"photo mécanicien\">
+    <div class=\"row flex-lg-row-reverse align-items-center g-5 py-5 h-100\">
+        <div class=\"col-10 col-sm-8 col-lg-4 mt-0\">
+            <img src=\"{{ asset('images/photo_mécanicien.jpg') }}\" class=\"d-block w-75\" alt=\"photo mécanicien\">
         </div>
-        <div class=\"col-lg-6\">
-            <h1 class=\"display-5 fw-bold text-body-emphasis lh-1 mb-3\">Bienvenue au Garage V. Parrot</h1>
-            <p class=\"lead\">Installé à Toulouse depuis 2021, notre garage est à votre service dans nos nombreux domaines d'expertise</p>
+        <div class=\"col-lg-8 mt-0\">
+            <h1 class=\" fw-bold text-body-emphasis h-1 mb-3\">Bienvenue au Garage V. Parrot</h1>
+            <p class=\"\">Installé à Toulouse depuis 2021, notre garage est à votre service dans nos nombreux domaines d'expertise</p>
             <div class=\"d-grid gap-2 d-md-flex justify-content-md-start\">
-                <a href=\"{{ path('occasions_list') }}\" class=\"btn btn-outline-primary btn-lg px-4 me-md-2\">Voir nos véhicules d'occasion</a>
+                <a href=\"{{ path('occasions_list') }}\" class=\"btn btn-outline-primary btn px-4 me-md-2\">Voir nos véhicules d'occasion</a>
             </div>
-            <h4 class=\"mt-5\">Toute une gamme de services professionnels</h4>
+            <h4 class=\"mt-4\">Toute une gamme de services professionnels</h4>
             <ul>
             {% for service in services %}
             <div class=\"d-flex my-2\">

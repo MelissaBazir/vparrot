@@ -8,7 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @extends ServiceEntityRepository<Car>
@@ -58,56 +58,75 @@ class CarRepository extends ServiceEntityRepository
 
     public function findSearch(SearchData $search): PaginationInterface
     {
-        $query = $this
-            ->createQueryBuilder("c");
-            
-    if (!empty($search->q)) {
-        $query = $query
-            ->andWhere('c.title LIKE :q')
-            ->setParameter("q", "%" . $search->q . "%");
-    }
-
-    if (!empty($search->minPrice)) {
-        $query = $query
-            ->andWhere('c.price >= :minPrice')
-            ->setParameter('minPrice', $search->minPrice);
-    }
-
-    if (!empty($search->maxPrice)) {
-        $query = $query
-            ->andWhere('c.price <= :maxPrice')
-            ->setParameter('maxPrice', $search->maxPrice);
-    }
-
-    if (!empty($search->minYear)) {
-        $query = $query
-            ->andWhere('c.year >= :minYear')
-            ->setParameter('minYear', $search->minYear);
-    }
-
-    if (!empty($search->maxYear)) {
-        $query = $query
-            ->andWhere('c.year <= :maxYear')
-            ->setParameter('maxYear', $search->maxYear);
-    }
-    
-    if (!empty($search->minMileage)) {
-        $query = $query
-            ->andWhere('c.mileage >= :minMileage')
-            ->setParameter('minMileage', $search->minMileage);
-    }
-
-    if (!empty($search->maxMileage)) {
-        $query = $query
-            ->andWhere('c.mileage <= :maxMileage')
-            ->setParameter('maxMileage', $search->maxMileage);
-    }
-        
-        $query = $query->getQuery();
+        $query = $this->getSearchQuery($search)->getQuery();
         return $this->paginator->paginate(
             $query,
             $search->page,
             9
         );
+    }
+
+    /**
+     * fetch min and max price according to search
+     *
+     * @param SearchData $search
+     * @return integer[]
+     */
+    public function findMinMaxPrice(SearchData $search): array
+    {
+        $results = $this->getSearchQuery($search)
+            ->select('MIN(c.price) as minPrice', 'MAX(c.price) as maxPrice')
+            ->getQuery()
+            ->getScalarResult();
+        return [$results[0]['minPrice'], $results[0]['maxPrice']];
+    }
+
+    private function getSearchQuery(SearchData $search): QueryBuilder
+    {
+        $query = $this
+            ->createQueryBuilder("c");
+
+        if (!empty($search->q)) {
+            $query = $query
+                ->andWhere('c.title LIKE :q')
+                ->setParameter("q", "%" . $search->q . "%");
+        }
+
+        if (!empty($search->minPrice)) {
+            $query = $query
+                ->andWhere('c.price >= :minPrice')
+                ->setParameter('minPrice', $search->minPrice);
+        }
+
+        if (!empty($search->maxPrice)) {
+            $query = $query
+                ->andWhere('c.price <= :maxPrice')
+                ->setParameter('maxPrice', $search->maxPrice);
+        }
+
+        if (!empty($search->minYear)) {
+            $query = $query
+                ->andWhere('c.year >= :minYear')
+                ->setParameter('minYear', $search->minYear);
+        }
+
+        if (!empty($search->maxYear)) {
+            $query = $query
+                ->andWhere('c.year <= :maxYear')
+                ->setParameter('maxYear', $search->maxYear);
+        }
+
+        if (!empty($search->minMileage)) {
+            $query = $query
+                ->andWhere('c.mileage >= :minMileage')
+                ->setParameter('minMileage', $search->minMileage);
+        }
+
+        if (!empty($search->maxMileage)) {
+            $query = $query
+                ->andWhere('c.mileage <= :maxMileage')
+                ->setParameter('maxMileage', $search->maxMileage);
+        }
+        return $query;
     }
 }

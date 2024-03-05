@@ -27,6 +27,7 @@ class CarController extends AbstractController
         $data->page = $request->get('page', 1);
         $form = $this->createForm(SearchForm::class, $data);
         $form->handleRequest($request);
+        [$minPrice, $maxPrice] = $carRepository->findMinMaxPrice($data);
         $cars = $carRepository->findSearch($data);
         // if Ajax request, we get a Json response
         if ($request->get('ajax')) {
@@ -37,6 +38,8 @@ class CarController extends AbstractController
         return $this->render('car/list.html.twig', [
             'cars' => $cars,
             'form' => $form->createView(),
+            'minPrice' => $minPrice,
+            'maxPrice' => $maxPrice,
         ]);
     }
 
@@ -90,7 +93,7 @@ class CarController extends AbstractController
     #[Route('/occasions/{slug}', name: 'occasions_details', methods: ['GET'])]
     public function details(Car $car): Response
     {
-        
+
         return $this->render('car/details.html.twig', [
             'car' => $car,
         ]);

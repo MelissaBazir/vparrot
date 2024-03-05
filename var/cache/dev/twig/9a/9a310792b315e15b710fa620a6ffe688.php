@@ -62,8 +62,8 @@ class __TwigTemplate_ec51e69c65537ffc2eb3266cd7df5e49 extends Template
 
       
 
-    <div class=\"d-flex flex-column flex-sm-row justify-content-between py-4 mt-4\">
-      <p>© 2023 Garage V. Parrot, SAS Tous droits réservés.</p>
+    <div class=\"d-flex flex-column flex-sm-row justify-content-center py-4 mt-4\">
+      <p>© 2024 Garage V. Parrot, SAS Tous droits réservés.</p>
     </div>
   </footer>
 </div>";
@@ -108,8 +108,8 @@ class __TwigTemplate_ec51e69c65537ffc2eb3266cd7df5e49 extends Template
 
       
 
-    <div class=\"d-flex flex-column flex-sm-row justify-content-between py-4 mt-4\">
-      <p>© 2023 Garage V. Parrot, SAS Tous droits réservés.</p>
+    <div class=\"d-flex flex-column flex-sm-row justify-content-center py-4 mt-4\">
+      <p>© 2024 Garage V. Parrot, SAS Tous droits réservés.</p>
     </div>
   </footer>
 </div>", "_partials/_footer.html.twig", "C:\\wamp64\\www\\symfony\\vparrot\\templates\\_partials\\_footer.html.twig");

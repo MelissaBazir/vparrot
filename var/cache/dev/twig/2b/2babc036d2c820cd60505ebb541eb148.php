@@ -62,20 +62,30 @@ class __TwigTemplate_5e13ac2250aa791f3290d60d53cabb95 extends Template
         echo "
         </div>
     </div>
-    <div class=\"mb-3 slider-styled\" id=\"price-slider\"></div>
+    <div class=\"mb-3 slider-styled\" id=\"price-slider\" data-min-price=\"";
+        // line 13
+        echo twig_escape_filter($this->env, (isset($context["minPrice"]) || array_key_exists("minPrice", $context) ? $context["minPrice"] : (function () { throw new RuntimeError('Variable "minPrice" does not exist.', 13, $this->source); })()), "html", null, true);
+        echo "\" data-max-price=\"";
+        echo twig_escape_filter($this->env, (isset($context["maxPrice"]) || array_key_exists("maxPrice", $context) ? $context["maxPrice"] : (function () { throw new RuntimeError('Variable "maxPrice" does not exist.', 13, $this->source); })()), "html", null, true);
+        echo "\"></div>
+
+    ";
+        // line 15
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\DumpExtension']->dump($this->env, $context, (isset($context["minPrice"]) || array_key_exists("minPrice", $context) ? $context["minPrice"] : (function () { throw new RuntimeError('Variable "minPrice" does not exist.', 15, $this->source); })()), (isset($context["maxPrice"]) || array_key_exists("maxPrice", $context) ? $context["maxPrice"] : (function () { throw new RuntimeError('Variable "maxPrice" does not exist.', 15, $this->source); })()));
+        echo "
 
     <h4>Année</h4>
     <div class=\"row\">
         <div class=\"col-md-6\">
             ";
-        // line 18
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 18, $this->source); })()), "minYear", [], "any", false, false, false, 18), 'row');
+        // line 20
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 20, $this->source); })()), "minYear", [], "any", false, false, false, 20), 'row');
         echo "
         </div>
         <div class=\"col-md-6\">
             ";
-        // line 21
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 21, $this->source); })()), "maxYear", [], "any", false, false, false, 21), 'row');
+        // line 23
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 23, $this->source); })()), "maxYear", [], "any", false, false, false, 23), 'row');
         echo "
         </div>
     </div>
@@ -85,14 +95,14 @@ class __TwigTemplate_5e13ac2250aa791f3290d60d53cabb95 extends Template
     <div class=\"row\">
         <div class=\"col-md-6\">
             ";
-        // line 29
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 29, $this->source); })()), "minMileage", [], "any", false, false, false, 29), 'row');
+        // line 31
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 31, $this->source); })()), "minMileage", [], "any", false, false, false, 31), 'row');
         echo "
         </div>
         <div class=\"col-md-6\">
             ";
-        // line 32
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 32, $this->source); })()), "maxMileage", [], "any", false, false, false, 32), 'row');
+        // line 34
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 34, $this->source); })()), "maxMileage", [], "any", false, false, false, 34), 'row');
         echo "
         </div>
     </div>
@@ -100,8 +110,8 @@ class __TwigTemplate_5e13ac2250aa791f3290d60d53cabb95 extends Template
 
 <button type=\"submit\" class=\"btn btn-outline-primary w-100 my-3\">Appliquer le filtre</button>
 ";
-        // line 38
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 38, $this->source); })()), 'form_end');
+        // line 40
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 40, $this->source); })()), 'form_end');
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -122,7 +132,7 @@ class __TwigTemplate_5e13ac2250aa791f3290d60d53cabb95 extends Template
 
     public function getDebugInfo()
     {
-        return array (  104 => 38,  95 => 32,  89 => 29,  78 => 21,  72 => 18,  61 => 10,  55 => 7,  47 => 2,  43 => 1,);
+        return array (  114 => 40,  105 => 34,  99 => 31,  88 => 23,  82 => 20,  74 => 15,  67 => 13,  61 => 10,  55 => 7,  47 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -139,7 +149,9 @@ class __TwigTemplate_5e13ac2250aa791f3290d60d53cabb95 extends Template
             {{ form_row(form.maxPrice) }}
         </div>
     </div>
-    <div class=\"mb-3 slider-styled\" id=\"price-slider\"></div>
+    <div class=\"mb-3 slider-styled\" id=\"price-slider\" data-min-price=\"{{ minPrice }}\" data-max-price=\"{{ maxPrice }}\"></div>
+
+    {{ dump(minPrice,maxPrice) }}
 
     <h4>Année</h4>
     <div class=\"row\">

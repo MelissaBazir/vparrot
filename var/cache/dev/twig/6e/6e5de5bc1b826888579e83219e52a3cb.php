@@ -94,7 +94,7 @@ class __TwigTemplate_de7984dbbbde3589274628e00f0a87a4 extends Template
                 <div class=\"col-md-3 pt-4\">
                     ";
         // line 13
-        $this->loadTemplate("car/_filter.html.twig", "car/list.html.twig", 13)->display(twig_to_array(["form" => (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })())]));
+        $this->loadTemplate("car/_filter.html.twig", "car/list.html.twig", 13)->display($context);
         // line 14
         echo "                </div>
                 <div class=\"\">
@@ -152,7 +152,7 @@ class __TwigTemplate_de7984dbbbde3589274628e00f0a87a4 extends Template
             
             <div class=\"js-filter d-md-flex d-lg-flex\">
                 <div class=\"col-md-3 pt-4\">
-                    {% include 'car/_filter.html.twig' with {form: form} only %}
+                    {% include 'car/_filter.html.twig' %}
                 </div>
                 <div class=\"\">
                     <div class=\"row d-flex justify-content-around g-4 mb-4 js-filter-content pt-2\">
